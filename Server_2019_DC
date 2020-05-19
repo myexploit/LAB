@@ -1,0 +1,3 @@
+A PS one-liner to convert your server 2019 into a lab DC.
+
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force ; Install-WindowsFeature AD-Domain-Services  ; Import-Module ADDSDeployment ; Install-ADDSForest  -DatabasePath "C:\Windows\NTDS"  -DomainMode "Win2008R2"  -DomainName "hacklab.local"  -DomainNetbiosName "HACKLAB"  -ForestMode "Win2008R2"  -InstallDns:$true  -LogPath "C:\Windows\NTDS"  -NoRebootOnCompletion:$true  -SysvolPath "C:\Windows\SYSVOL"  -Force:$true ; Add-WindowsFeature RSAT-AD-Tools ; Restart-Computer
