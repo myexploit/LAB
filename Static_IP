@@ -1,0 +1,6 @@
+Note in VM InterfaceAlias are Ethernet0
+Note in VB InterfaceAlias are Ethernet
+
+You need to add your Chosen IP address, Default gateway IP address, DNS IP and Host name
+
+New-NetIPAddress –InterfaceAlias Ethernet0 –IPAddress Add-Your-Static-IP-Address –PrefixLength 24 -DefaultGateway Add-Your-Static-DG-IP-Address ; Set-DnsClientServerAddress -InterfaceAlias Ethernet0 -ServerAddresses Add-Your-Static-DNS-IP-Address,Add-Your-2nd-Static-DNS-IP-Address ; Rename-Computer -NewName "Add-Your-hostname" ; Restart-Computer
