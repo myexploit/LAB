@@ -3,6 +3,7 @@ Creating a hack lab domain
 Tested on server 2008R2 and server 2019
 
 The following one line will convert a server 2008 R2 to a domain controller. Right click on CMD and run as administrator, then copy and paste the single line below in one go. (Clearly read it before but it will set up the domain called hacklab.local).  
+
 dcpromo /unattend /InstallDns:yes /dnsOnNetwork:yes /replicaOrNewDomain:domain /newDomain:forest /newDomainDnsName:hacklab.local /DomainNetbiosName:hacklab.local /databasePath:"c:\Windows\ntds" /logPath:"c:\Windows\ntdslogs" /sysvolpath:"c:\Windows\sysvol" /safeModeAdminPassword:Passw0rd! /forestLevel:2 /domainLevel:2 /rebootOnCompletion:yes
 
 After a reboot, right click on CMD and run as administrator again, then copy the below sections and paste in. 
