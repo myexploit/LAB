@@ -1,0 +1,195 @@
+Creating a hack lab domain
+
+Tested on server 2008R2 and server 2019
+
+The following one line will convert a server 2008 R2 to a domain controller. Right click on CMD and run as administrator, then copy and paste the single line below in one go. (Clearly read it before but it will set up the domain called hacklab.local).  
+dcpromo /unattend /InstallDns:yes /dnsOnNetwork:yes /replicaOrNewDomain:domain /newDomain:forest /newDomainDnsName:hacklab.local /DomainNetbiosName:hacklab.local /databasePath:"c:\Windows\ntds" /logPath:"c:\Windows\ntdslogs" /sysvolpath:"c:\Windows\sysvol" /safeModeAdminPassword:Passw0rd! /forestLevel:2 /domainLevel:2 /rebootOnCompletion:yes
+
+After a reboot, right click on CMD and run as administrator again, then copy the below sections and paste in. 
+This will create OU, and assign users to the department names, each password which is very weak is the same, this is simply to create a lab domain for hacking, feel free to edit each password in the script as you require. It will also set up Service Principal Name (SPN) for some accounts, so you can kerberoast them.
+
+Add Departments organizational unit (OU) Add Head_Office OU with nested department OU and IT OU.
+dsadd ou ou=Departments,dc=hacklab,dc=local 
+dsadd ou "ou=IT,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Admins,ou=IT,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Service_Accounts,ou=IT,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Help_Desk,ou=IT,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=HR,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Sales,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Accounts,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Research,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Reception,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Administration,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
+dsadd ou "ou=Senior_Management,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
+
+Create a user groups OU
+dsadd ou ou=Groups,ou=Departments,dc=hacklab,dc=local
+
+Create the following user groups to the group OU
+dsadd group cn=sales,ou=Groups,ou=Departments,dc=hacklab,dc=local
+dsadd group cn=administration,ou=Groups,ou=Departments,dc=hacklab,dc=local
+dsadd group cn=accounts,ou=Groups,ou=Departments,dc=hacklab,dc=local
+dsadd group cn=help_desk,ou=Groups,ou=Departments,dc=hacklab,dc=local
+dsadd group cn=support,ou=Groups,ou=Departments,dc=hacklab,dc=local
+dsadd group cn=RDP,ou=Groups,ou=Departments,dc=hacklab,dc=local
+
+Create Lab Test accounts
+
+Head_Office / Accounts
+
+dsadd user "cn=n.collins, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=o.davidson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=p.davies, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=q.dawson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=u.dixon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=r.edwards, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=s.elliot, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=t.evans, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=u.fisher, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=v.fletcher, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=w.ford, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=x.foster, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=y.fox, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=z.gibson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=a.graham, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=b.grant, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=c.gray, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=d.green, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+
+Head_Office / Administration
+
+dsadd user "cn=m.jenkins, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=n.johnson, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=o.jones, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=g.white, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=h.yalden, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=i.yarbury, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=j.yardley, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+
+Head_Office / HR
+
+dsadd user "cn=z.mcdonald, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=a.murphy, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=b.natt, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=c.nelson, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=d.nightingale, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=e.nixon, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=f.nutter, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+
+Head_Office / Reception
+
+dsadd user "cn=p.kelly, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=q.kennedy, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=u.king, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=r.knight, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=s.lawrence, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=t.lee, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+
+Head_Office / Research
+
+dsadd user "cn=u.lewis, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=v.lloyd, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=w.marshall, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=x.martin, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=y.mason, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=g.dell, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=h.osborne, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=i.owen, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=j.oxley, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=k.page, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=l.painter, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=m.palmer, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=n.pastor, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=o.peterson, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=p.quill, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=q.quimby, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=u.quintrell, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=r.ramsey, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=s.ratliff, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=t.richards, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=u.roberts, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=v.robinson, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=w.scott, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=x.simpson, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=y.smith, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=z.stewart, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=a.taylor, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=b.turner, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=c.walsh, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=d.ward, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=e.webb, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=f.west, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+
+Head_Office / Sales
+
+dsadd user "cn=d.atkinson, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=e.bailey, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=f.baker, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=g.ball, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=h.bell, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=i.brown, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=j.burton, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=k.carter, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=l.clarke, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=m.cole, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=e.griffiths, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=f.hall, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=g.hamilton, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=h.harris, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=i.harvey, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=j.hill, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=k.jackson, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=l.james, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+
+Head_Office / Senior_Management
+
+dsadd user "cn=k.yarrow, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=l.yates, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=m.young, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=n.zachary, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=o.zelly, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=p.zinc, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=q.zouch, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+
+Head_Office / Help_Desk
+
+dsadd user "cn=a.adams, ou=Help_Desk, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=b.allen, ou=Help_Desk, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=c.armstrong, ou=Help_Desk, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+
+Admins / IT / DA
+
+dsadd user "cn=adm.adams, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=adm.smith, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=adm.stewart, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=adm.natt, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=adm.nelson, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+
+Service Accounts / IT 
+
+dsadd user "cn=svc_afds, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=svc_test, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=svc_mssql1, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=svc_mssql2, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=svc_lab, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+dsadd user "cn=svc_admin, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+
+Set up Service Principal Name (SPN) for the following accounts so you can kerberoast them.
+
+setspn -s http/server1.hacklab.local:8082 svc_afds
+setspn -s http/server1.hacklab.local:8083 svc_test
+setspn -s http/server1.hacklab.local:8084 svc_mssql1
+setspn -s http/server1.hacklab.local:8085 svc_mssql2
+setspn -s http/server1.hacklab.local:8086 svc_lab
+setspn -s http/server1.hacklab.local:8087 svc_admin
+
+
+Original notes
+
+Add a user to DA
+dsadd user "cn=User23, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+
+
+Standard User
+dsadd user "cn=User1, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
