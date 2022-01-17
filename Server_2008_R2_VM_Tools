@@ -1,0 +1,19 @@
+The bundled VM tools with VM Workstation version 16X no longer support Server 2008 and fail during installation.
+
+Server 2008 R2 is end of life, and as such VM have stopped supporting it, I still use Server 2008 in my lab’s as it is still commonly used in the wild.
+
+The following is a work round, and for lab use only, it results in an older VM tools been installed.
+
+Spin up a copy of server 2008 R2 then enable admin accounts access to browse the internet.
+
+1.	Search for Server Manager / click on it to open
+
+2.	On the default Server Manger load page pull down and look for “Configure IE ESC” it’s to the right column under “Security Information” settings / click on it.
+
+3.	Under Administrators click off the setting to off / click OK.
+
+You should then be able to browse to https://packages.vmware.com/tools/releases/ and download an older VM manger which supports Server 2008 R2.
+
+Version used in my lab https://packages.vmware.com/tools/releases/10.3.5/windows/x64/VMware-tools-10.3.5-10430147-x86_64.exe
+
+4.	Download VMware-tools-10.3.5-10430147-x86_64.exe, right click on it and run as admin, this should then install VM tools on your Server 2008 R2.
