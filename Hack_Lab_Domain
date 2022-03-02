@@ -6,7 +6,7 @@ The following one line will convert a server 2008 R2 to a domain controller. Rig
 
 dcpromo /unattend /InstallDns:yes /dnsOnNetwork:yes /replicaOrNewDomain:domain /newDomain:forest /newDomainDnsName:hacklab.local /DomainNetbiosName:hacklab.local /databasePath:"c:\Windows\ntds" /logPath:"c:\Windows\ntdslogs" /sysvolpath:"c:\Windows\sysvol" /safeModeAdminPassword:Passw0rd! /forestLevel:2 /domainLevel:2 /rebootOnCompletion:yes
 
-After a reboot, right click on CMD and run as administrator again, then copy the below sections and paste in. 
+After a reboot, right click on powershell and run as administrator, then copy the below sections and paste in. 
 This will create OU, and assign users to the department names, each password which is very weak is the same, this is simply to create a lab domain for hacking, feel free to edit each password in the script as you require. It will also set up Service Principal Name (SPN) for some accounts, so you can kerberoast them.
 
 Add Departments organizational unit (OU) Add Head_Office OU with nested department OU and IT OU.
