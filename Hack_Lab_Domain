@@ -124,7 +124,7 @@ dsadd user "cn=f.west, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, 
 
 Head_Office / Sales
 
-dsadd user "cn=d.atkinson, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=d.atkinson, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Summer123 -mustchpwd no
 dsadd user "cn=e.bailey, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=f.baker, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=g.ball, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
@@ -185,12 +185,15 @@ setspn -s http/server1.hacklab.local:8085 svc_mssql2
 setspn -s http/server1.hacklab.local:8086 svc_lab
 setspn -s http/server1.hacklab.local:8087 svc_admin
 
+Make the following accounts vulnerable to asreproast.
 
-Original notes
+Set-ADAccountControl -Identity m.jenkins -DoesNotRequirePreAuth 1
+Set-ADAccountControl -Identity z.mcdonald -DoesNotRequirePreAuth 1
+Set-ADAccountControl -Identity u.lewis -DoesNotRequirePreAuth 1
 
-Add a user to DA
-dsadd user "cn=User23, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
+Create a description filed with a password in it.
 
+Set-ADUser d.atkinson -Description "User Password Summer123"
 
-Standard User
-dsadd user "cn=User1, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+DisableSMBSigning
+Set-SmbClientConfiguration -RequireSecuritySignature 0 -EnableSecuritySignature 0 -Confirm -Force
