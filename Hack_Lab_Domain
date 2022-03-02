@@ -195,5 +195,5 @@ Create a description filed with a password in it.
 
 Set-ADUser d.atkinson -Description "User Password Summer123"
 
-DisableSMBSigning
+Disable SMB Signing on the DC.
 Set-SmbClientConfiguration -RequireSecuritySignature 0 -EnableSecuritySignature 0 -Confirm -Force
