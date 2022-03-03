@@ -9,7 +9,7 @@ dcpromo /unattend /InstallDns:yes /dnsOnNetwork:yes /replicaOrNewDomain:domain /
 After a reboot, right click on powershell and run as administrator, then copy the below sections and paste in. 
 This will create OU, and assign users to the department names, each password which is very weak is the same, this is simply to create a lab domain for hacking, feel free to edit each password in the script as you require. It will also set up Service Principal Name (SPN) for some accounts, so you can kerberoast them.
 
-Add Departments organizational unit (OU) Add Head_Office OU with nested department OU and IT OU.
+#Add Departments organizational unit (OU) Add Head_Office OU with nested department OU and IT OU.
 dsadd ou ou=Departments,dc=hacklab,dc=local 
 dsadd ou "ou=IT,ou=Departments,dc=hacklab,dc=local"
 dsadd ou "ou=Admins,ou=IT,ou=Departments,dc=hacklab,dc=local"
@@ -24,10 +24,10 @@ dsadd ou "ou=Reception,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
 dsadd ou "ou=Administration,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
 dsadd ou "ou=Senior_Management,ou=Head_Office,ou=Departments,dc=hacklab,dc=local"
 
-Create a user groups OU
+#Create a user groups OU
 dsadd ou ou=Groups,ou=Departments,dc=hacklab,dc=local
 
-Create the following user groups to the group OU
+#Create the following user groups to the group OU
 dsadd group cn=sales,ou=Groups,ou=Departments,dc=hacklab,dc=local
 dsadd group cn=administration,ou=Groups,ou=Departments,dc=hacklab,dc=local
 dsadd group cn=accounts,ou=Groups,ou=Departments,dc=hacklab,dc=local
@@ -35,9 +35,9 @@ dsadd group cn=help_desk,ou=Groups,ou=Departments,dc=hacklab,dc=local
 dsadd group cn=support,ou=Groups,ou=Departments,dc=hacklab,dc=local
 dsadd group cn=RDP,ou=Groups,ou=Departments,dc=hacklab,dc=local
 
-Create Lab Test accounts
+#Create Lab Test accounts
 
-Head_Office / Accounts
+#Head_Office / Accounts
 
 dsadd user "cn=n.collins, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=o.davidson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
@@ -68,7 +68,7 @@ dsadd user "cn=h.yalden, ou=Administration, ou=Head_Office, ou=Departments, dc=h
 dsadd user "cn=i.yarbury, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=j.yardley, ou=Administration, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 
-Head_Office / HR
+#Head_Office / HR
 
 dsadd user "cn=z.mcdonald, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=a.murphy, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
@@ -78,7 +78,7 @@ dsadd user "cn=d.nightingale, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab,
 dsadd user "cn=e.nixon, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=f.nutter, ou=HR, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 
-Head_Office / Reception
+#Head_Office / Reception
 
 dsadd user "cn=p.kelly, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=q.kennedy, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
@@ -87,7 +87,7 @@ dsadd user "cn=r.knight, ou=Reception, ou=Head_Office, ou=Departments, dc=hackla
 dsadd user "cn=s.lawrence, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=t.lee, ou=Reception, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 
-Head_Office / Research
+#Head_Office / Research
 
 dsadd user "cn=u.lewis, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=v.lloyd, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
@@ -122,7 +122,7 @@ dsadd user "cn=d.ward, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, 
 dsadd user "cn=e.webb, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=f.west, ou=Research, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 
-Head_Office / Sales
+#Head_Office / Sales
 
 dsadd user "cn=d.atkinson, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Summer123 -mustchpwd no
 dsadd user "cn=e.bailey, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
@@ -143,7 +143,7 @@ dsadd user "cn=j.hill, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=
 dsadd user "cn=k.jackson, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=l.james, ou=Sales, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 
-Head_Office / Senior_Management
+#Head_Office / Senior_Management
 
 dsadd user "cn=k.yarrow, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=l.yates, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
@@ -153,13 +153,13 @@ dsadd user "cn=o.zelly, ou=Senior_Management, ou=Head_Office, ou=Departments, dc
 dsadd user "cn=p.zinc, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=q.zouch, ou=Senior_Management, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 
-Head_Office / Help_Desk
+#Head_Office / Help_Desk
 
 dsadd user "cn=a.adams, ou=Help_Desk, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=b.allen, ou=Help_Desk, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 dsadd user "cn=c.armstrong, ou=Help_Desk, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
 
-Admins / IT / DA
+#Admins / IT / DA
 
 dsadd user "cn=adm.adams, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
 dsadd user "cn=adm.smith, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
@@ -167,7 +167,7 @@ dsadd user "cn=adm.stewart, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=loc
 dsadd user "cn=adm.natt, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
 dsadd user "cn=adm.nelson, ou=Admins, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
 
-Service Accounts / IT 
+#Service Accounts / IT 
 
 dsadd user "cn=svc_afds, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
 dsadd user "cn=svc_test, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
@@ -176,7 +176,7 @@ dsadd user "cn=svc_mssql2, ou=Service_Accounts, ou=IT, ou=Departments, dc=hackla
 dsadd user "cn=svc_lab, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
 dsadd user "cn=svc_admin, ou=Service_Accounts, ou=IT, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -memberof "CN=Domain Admins,CN=Users,dc=hacklab, dc=local"
 
-Set up Service Principal Name (SPN) for the following accounts so you can kerberoast them.
+#Set up Service Principal Name (SPN) for the following accounts so you can kerberoast them.
 
 setspn -s http/server1.hacklab.local:8082 svc_afds
 setspn -s http/server1.hacklab.local:8083 svc_test
@@ -185,15 +185,132 @@ setspn -s http/server1.hacklab.local:8085 svc_mssql2
 setspn -s http/server1.hacklab.local:8086 svc_lab
 setspn -s http/server1.hacklab.local:8087 svc_admin
 
-Make the following accounts vulnerable to asreproast.
+#Make the following accounts vulnerable to asreproast.
 
 Set-ADAccountControl -Identity m.jenkins -DoesNotRequirePreAuth 1
 Set-ADAccountControl -Identity z.mcdonald -DoesNotRequirePreAuth 1
 Set-ADAccountControl -Identity u.lewis -DoesNotRequirePreAuth 1
 
-Create a description filed with a password in it.
+#Create a description filed with a password in it.
 
 Set-ADUser d.atkinson -Description "User Password Summer123"
 
-Disable SMB Signing on the DC.
+#Disable SMB Signing on the DC.
+
 Set-SmbClientConfiguration -RequireSecuritySignature 0 -EnableSecuritySignature 0 -Confirm -Force
+
+
+#Set UP ACL's
+
+Import-Module ActiveDirectory
+Set-Location AD:
+
+Function SetAcl($for, $to, $right, $inheritance)
+{
+    $forSID = New-Object System.Security.Principal.SecurityIdentifier (Get-ADUser $for).SID
+    $objOU = ($to).DistinguishedName
+    $objAcl = get-acl $objOU
+    # https://docs.microsoft.com/fr-fr/dotnet/api/system.directoryservices.activedirectoryrights?view=dotnet-plat-ext-5.0
+    $adRight =  [System.DirectoryServices.ActiveDirectoryRights] $right # https://docs.microsoft.com/fr-fr/dotnet/api/system.directoryservices.activedirectoryrights?view=dotnet-plat-ext-5.0
+    $type =  [System.Security.AccessControl.AccessControlType] "Allow" # https://docs.microsoft.com/fr-fr/dotnet/api/system.security.accesscontrol.accesscontroltype?view=dotnet-plat-ext-5.0
+    $inheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance] $inheritance # https://docs.microsoft.com/fr-fr/dotnet/api/system.directoryservices.activedirectorysecurityinheritance?view=dotnet-plat-ext-5.0
+    $ace = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $forSID,$adRight,$type,$inheritanceType
+    $objAcl.AddAccessRule($ace)
+    Set-Acl -AclObject $objAcl -path $objOU
+}
+
+
+Function SetAclExtended($for, $to, $right, $extendedRightGUID, $inheritance)
+{
+    $forSID = New-Object System.Security.Principal.SecurityIdentifier (Get-ADUser $for).SID
+    $objOU = ($to).DistinguishedName
+    $objAcl = get-acl $objOU
+    # https://docs.microsoft.com/fr-fr/dotnet/api/system.directoryservices.activedirectoryrights?view=dotnet-plat-ext-5.0
+    $adRight =  [System.DirectoryServices.ActiveDirectoryRights] $right # https://docs.microsoft.com/fr-fr/dotnet/api/system.directoryservices.activedirectoryrights?view=dotnet-plat-ext-5.0
+    $type =  [System.Security.AccessControl.AccessControlType] "Allow" # https://docs.microsoft.com/fr-fr/dotnet/api/system.security.accesscontrol.accesscontroltype?view=dotnet-plat-ext-5.0
+    $inheritanceType = [System.DirectoryServices.ActiveDirectorySecurityInheritance] $inheritance # https://docs.microsoft.com/fr-fr/dotnet/api/system.directoryservices.activedirectorysecurityinheritance?view=dotnet-plat-ext-5.0
+
+    $ace = New-Object System.DirectoryServices.ActiveDirectoryAccessRule $forSID,$adRight,$type,$extendedRightGUID,$inheritanceType
+    $objAcl.AddAccessRule($ace)
+    Set-Acl -AclObject $objAcl -path $objOU
+}
+
+## acl values :
+# AccessSystemSecurity
+# CreateChild
+# Delete
+# DeleteChild
+# DeleteTree
+# ExtendedRight
+# GenericAll
+# GenericExecute
+# GenericRead
+# GenericWrite
+# ListChildren
+# ListObject
+# ReadControl
+# ReadProperty
+# Self
+# Synchronize
+# WriteDacl
+# WriteOwner
+# WriteProperty 
+
+## extend rights
+# "00299570-246d-11d0-a768-00aa006e0529" {$right = "User-Force-Change-Password"}
+# "45ec5156-db7e-47bb-b53f-dbeb2d03c40"  {$right = "Reanimate-Tombstones"}
+# "bf9679c0-0de6-11d0-a285-00aa003049e2" {$right = "Self-Membership"}
+# "ba33815a-4f93-4c76-87f3-57574bff8109" {$right = "Manage-SID-History"}
+# "1131f6ad-9c07-11d1-f79f-00c04fc2dcd2" {$right = "DS-Replication-Get-Changes-All"}
+
+# ACL abuse scenarios
+# https://sensepost.com/blog/2020/ace-to-rce/
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces
+# https://adsecurity.org/?p=3658
+
+
+# genericall-on-user1
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#genericall-on-user
+SetAcl (Get-ADUser "n.collins") (Get-ADUser "a.adams") "GenericAll" "None"
+
+# genericall-on-group
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#genericall-on-group
+SetAcl (Get-ADUser "o.davidson") (Get-ADGroup "Domain Admins") "GenericAll" "None"
+
+# genericall-genericwrite-write-on-computer
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#genericall-genericwrite-write-on-computer
+SetAcl (Get-ADUser "g.white") (Get-ADComputer "Add-a-HostName") "GenericAll" "None"
+
+# writeproperty-on-group
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#writeproperty-on-group
+SetAcl (Get-ADUser "q.kennedy") (Get-ADGroup "Domain Admins") "WriteProperty" "All"
+
+# self-self-membership-on-group
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#self-self-membership-on-group
+SetAclExtended (Get-ADUser "u.roberts") (Get-ADGroup "Domain Admins") "Self" "bf9679c0-0de6-11d0-a285-00aa003049e2" "None"
+
+# writeproperty-self-membership
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#writeproperty-self-membership
+SetAclExtended (Get-ADUser "f.west") (Get-ADGroup "Domain Admins") "WriteProperty" "bf9679c0-0de6-11d0-a285-00aa003049e2" "All"
+
+# forcechangepassword
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#forcechangepassword
+# https://docs.microsoft.com/fr-fr/windows/win32/adschema/r-user-change-password
+SetAclExtended (Get-ADUser "l.james") (Get-ADUser "y.fox") "ExtendedRight" "00299570-246d-11d0-a768-00aa006e0529" "None"
+
+# write owner on group
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#writeowner-on-group
+SetAcl (Get-ADUser "a.graham") (Get-ADGroup "Domain Admins") "WriteOwner" "None"
+
+# genericwrite-on-user
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#genericwrite-on-user
+SetAcl (Get-ADUser "c.nelson") (Get-ADUser "w.marshall") "GenericWrite" "None"
+
+# writedacl-writeowner
+# https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#writedacl-writeowner
+SetAcl (Get-ADUser "p.kelly") (Get-ADGroup "RDP") "WriteDacl" "None"
+
+exit
+
+
+
