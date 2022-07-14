@@ -4,7 +4,7 @@
 
 # For server 2008 - The following one line will convert a server 2008 R2 to a domain controller. Right click on CMD and run as administrator, then copy and paste the single line below in one go. (Clearly read it before but it will set up the domain called hacklab.local).  
 
-dcpromo /unattend /InstallDns:yes /dnsOnNetwork:yes /replicaOrNewDomain:domain /newDomain:forest /newDomainDnsName:hacklab.local /DomainNetbiosName:hacklab.local /databasePath:"c:\Windows\ntds" /logPath:"c:\Windows\ntdslogs" /sysvolpath:"c:\Windows\sysvol" /safeModeAdminPassword:Passw0rd! /forestLevel:2 /domainLevel:2 /rebootOnCompletion:yes
+dcpromo /unattend /InstallDns:yes /dnsOnNetwork:yes /replicaOrNewDomain:domain /newDomain:forest /newDomainDnsName:hacklab.local /DomainNetbiosName:hacklab /databasePath:"c:\Windows\ntds" /logPath:"c:\Windows\ntdslogs" /sysvolpath:"c:\Windows\sysvol" /safeModeAdminPassword:Passw0rd! /forestLevel:2 /domainLevel:2 /rebootOnCompletion:yes
 
 # For server 2019 - A PS one-liner to convert your server 2019 into a lab DC.
 
