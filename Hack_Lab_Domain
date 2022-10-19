@@ -211,6 +211,41 @@ Set-ADUser d.atkinson -Description "User Password Summer123"
 
 Set-SmbClientConfiguration -RequireSecuritySignature 0 -EnableSecuritySignature 0 -Confirm -Force
 
+# Add Domain Machines
+
+New-ADComputer -Name "SR2000-1" -SamAccountName "SR2000-1" -Enabled $True -OperatingSystem "Windows Server 2000 Service Pack 4"
+New-ADComputer -Name "SR2000-2" -SamAccountName "SR2000-2" -Enabled $True -OperatingSystem "Windows Server 2000 Service Pack 4"
+New-ADComputer -Name "SR2000-3" -SamAccountName "SR2000-3" -Enabled $True -OperatingSystem "Windows Server 2000 Service Pack 4"
+New-ADComputer -Name "SR2000-4" -SamAccountName "SR2000-4" -Enabled $True -OperatingSystem "Windows Server 2000 Service Pack 4"
+New-ADComputer -Name "SR2000-5" -SamAccountName "SR2000-5" -Enabled $True -OperatingSystem "Windows Server 2000 Service Pack 4"
+New-ADComputer -Name "SR2000-6" -SamAccountName "SR2000-6" -Enabled $True -OperatingSystem "Windows Server 2000 Service Pack 4"
+New-ADComputer -Name "SR2003-1" -SamAccountName "SR2003-1" -Enabled $True -OperatingSystem "Windows Server 2003 Datacenter Service Pack 2"
+New-ADComputer -Name "SR2003-2" -SamAccountName "SR2003-2" -Enabled $True -OperatingSystem "Windows Server 2003 Datacenter Service Pack 2"
+New-ADComputer -Name "SR2003-3" -SamAccountName "SR2003-3" -Enabled $True -OperatingSystem "Windows Server 2003 Datacenter Service Pack 2"
+New-ADComputer -Name "SR2003-4" -SamAccountName "SR2003-4" -Enabled $True -OperatingSystem "Windows Server 2003 Datacenter Service Pack 2"
+New-ADComputer -Name "SR2003-5" -SamAccountName "SR2003-5" -Enabled $True -OperatingSystem "Windows Server 2003 Datacenter Service Pack 2"
+New-ADComputer -Name "SR2003-6" -SamAccountName "SR2003-6" -Enabled $True -OperatingSystem "Windows Server 2003 Datacenter Service Pack 2"
+New-ADComputer -Name "SR2008-1" -SamAccountName "SR208-1" -Enabled $True -OperatingSystem "Windows Server 2008 R2 Standard Service Pack 1"
+New-ADComputer -Name "SR2008-2" -SamAccountName "SR208-2" -Enabled $True -OperatingSystem "Windows Server 2008 R2 Standard Service Pack 1"
+New-ADComputer -Name "SR2008-3" -SamAccountName "SR208-3" -Enabled $True -OperatingSystem "Windows Server 2008 R2 Standard Service Pack 1"
+New-ADComputer -Name "SR2008-4" -SamAccountName "SR208-4" -Enabled $True -OperatingSystem "Windows Server 2008 R2 Standard Service Pack 1"
+New-ADComputer -Name "SR2008-5" -SamAccountName "SR208-5" -Enabled $True -OperatingSystem "Windows Server 2008 R2 Standard Service Pack 1"
+New-ADComputer -Name "SR2008-6" -SamAccountName "SR208-6" -Enabled $True -OperatingSystem "Windows Server 2008 R2 Standard Service Pack 1"
+New-ADComputer -Name "SR2012-1" -SamAccountName "SR2012-1" -Enabled $True -OperatingSystem "Windows Server 2012 Standard"
+New-ADComputer -Name "SR2012-2" -SamAccountName "SR2012-2" -Enabled $True -OperatingSystem "Windows Server 2012 Standard"
+New-ADComputer -Name "SR2012-3" -SamAccountName "SR2012-3" -Enabled $True -OperatingSystem "Windows Server 2012 Standard"
+New-ADComputer -Name "SR2012-4" -SamAccountName "SR2012-4" -Enabled $True -OperatingSystem "Windows Server 2012 Standard"
+New-ADComputer -Name "SR2019-1" -SamAccountName "SR2019-1" -Enabled $True -OperatingSystem "Windows Server 2019 Standard"
+New-ADComputer -Name "SR2019-2" -SamAccountName "SR2019-2" -Enabled $True -OperatingSystem "Windows Server 2019 Standard"
+New-ADComputer -Name "SR2019-3" -SamAccountName "SR2019-3" -Enabled $True -OperatingSystem "Windows Server 2019 Standard"
+New-ADComputer -Name "SR2019-4" -SamAccountName "SR2019-4" -Enabled $True -OperatingSystem "Windows Server 2019 Standard"
+New-ADComputer -Name "W7-1" -SamAccountName "W7-1" -Enabled $True -OperatingSystem "Windows 7 Professional Service Pack 1"
+New-ADComputer -Name "W7-2" -SamAccountName "W7-2" -Enabled $True -OperatingSystem "Windows 7 Professional Service Pack 1"
+New-ADComputer -Name "W7-3" -SamAccountName "W7-3" -Enabled $True -OperatingSystem "Windows 7 Professional Service Pack 1"
+New-ADComputer -Name "W7-4" -SamAccountName "W7-4" -Enabled $True -OperatingSystem "Windows 7 Professional Service Pack 1"
+New-ADComputer -Name "W7-5" -SamAccountName "W7-5" -Enabled $True -OperatingSystem "Windows 7 Professional Service Pack 1"
+New-ADComputer -Name "W7-6" -SamAccountName "W7-6" -Enabled $True -OperatingSystem "Windows 7 Professional Service Pack 1"
+New-ADComputer -Name "XP-1" -SamAccountName "XP-1" -Enabled $True -OperatingSystem "Windows XP Service Pack 1"
 
 # Set UP ACL's
 
