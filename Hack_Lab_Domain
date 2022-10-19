@@ -329,7 +329,7 @@ SetAcl (Get-ADUser "o.davidson") (Get-ADGroup "Domain Admins") "GenericAll" "Non
 # genericall-genericwrite-write-on-computer
 # https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#genericall-genericwrite-write-on-computer
 
-SetAcl (Get-ADUser "g.white") (Get-ADComputer "Add-a-HostName") "GenericAll" "None"
+SetAcl (Get-ADUser "g.white") (Get-ADComputer "SR2008-4") "GenericAll" "None"
 
 # writeproperty-on-group
 # https://www.ired.team/offensive-security-experiments/active-directory-kerberos-abuse/abusing-active-directory-acls-aces#writeproperty-on-group
