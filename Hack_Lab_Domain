@@ -51,24 +51,223 @@ dsadd group cn=RDP,ou=Groups,ou=Departments,dc=hacklab,dc=local
 
 # Head_Office / Accounts
 
-dsadd user "cn=n.collins, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=o.davidson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=p.davies, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=q.dawson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=u.dixon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=r.edwards, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=s.elliot, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=t.evans, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=u.fisher, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=v.fletcher, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=w.ford, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=x.foster, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=y.fox, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=z.gibson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=a.graham, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=b.grant, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=c.gray, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
-dsadd user "cn=d.green, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no
+dsadd user "cn=n.collins, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.davidson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.davies, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.dawson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.dixon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.edwards, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=s.elliot, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.evans, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.fisher, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=v.fletcher, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=w.ford, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=x.foster, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.fox, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=z.gibson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=a.graham, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.grant, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=c.gray, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.green, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.smith, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Dragon1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=c.johnason, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Baseball1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.thomas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Abc1231 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=e.miller, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Football1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=f.johnsson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Monkey1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=g.williams, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Letmein1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.harris, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Shadow1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=i.jackson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Qwertyuiop1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.wilsson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Mustang1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=k.mmoore, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Michael1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=l.martsinez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Superman1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=m.marjtinez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Fuckyou1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=n.anderson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Qazwsx1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.thompson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Killer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.thompson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Trustno11 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.lewis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Jordan1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.robinson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Jennifer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=s.sancshez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Zxcvbnm1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.clark, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Asdfgh1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.hernandez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Hunter1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=v.hill, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Buster1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=w.king, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Soccer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=x.rossi, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Harley1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.darrdvis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Andrew1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=z.perez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Tigger1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=a.white, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Sunshine1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.jackson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Iloveyou1 -mustchpwd no -pwdneverexpires yes -desc "Changed the users password to Iloveyou1"
+dsadd user "cn=c.smith, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Fuckme1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.taylor, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Charlie1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=e.martin, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Robert1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=f.thoffmas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Thomas1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=g.hernandez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Hockey1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=h.rodrgviguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Ranger1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=i.johncson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Daniel1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=j.miller, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Starwars1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=k.jones, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Klaster1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=l.davsris, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd George1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=m.andessrson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Computer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.johnfson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Michelle1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.mooore, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Jessica1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.clark, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Pepper1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.thomdas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Zxcvbn1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.martianez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Freedom1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=s.wiloson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passmeup1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.robinson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Fuckoff1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.marteinez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Maggie1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=v.sancahez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Aaaaaa1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=w.moorre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Ginger1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=x.thompson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Princess1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.martsinez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Joshua1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=z.hernandez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Cheese1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=a.miller, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Amanda1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.rodriseguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Summer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=c.anderson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Loveyou1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.sancahez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Ashley1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=e.wilison, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Nicole1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=f.davrtsis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Chelsea1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=g.mooree, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Biteme1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=h.thomddfas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Matthew1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=z.johnsson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Access1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=j.martainez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Yankees1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=k.rodrigfduez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Dallas1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=l.sanchdez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Austin1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=m.clark, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Thunder1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=n.davdemis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Taylor1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.wilwson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Matrix1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.robinson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd William1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.hernandez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Corvette1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.martiynez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Martin1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=s.anderson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Heather1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.johnsron, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Secret1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.rodrigkjuez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Fucker1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=v.sancghez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Merlin1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=w.wilsaon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Diamond1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=x.davifis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Gfhjkm1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.moossre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Hammer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=z.thomssas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Silver1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=a.martinuez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Anthony1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.hernandez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Justin1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=c.robinson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Bailey1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.clark, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Q1w2e3r4t51 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=e.jodhnson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Patrick1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=f.sanwchez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Internet1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=g.wilpson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Scooter1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=h.davxris, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Orange1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=i.moofrre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Golfer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=j.massrtainez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Cookie1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=k.rodrijguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Richard1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=l.sancahez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Samantha1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=m.anderson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Bigdog1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=n.johnsson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Guitar1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.martiwnez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Jackson1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.hernandez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Whatever1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.wiloson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Mickey1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.davirws, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Chicken1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=s.moewore, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Sparky1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.thoweermas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Snoopy1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.johnslon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Maverick1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=v.martienez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Phoenix1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=w.rodrisguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Camaro1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=x.sanchgez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Peanut1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.wilison, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Morgan1 -mustchpwd no -pwdneverexpires yes -desc "Changed the users password to Morgan1"
+dsadd user "cn=z.davsdis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Welcome1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=a.clark, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Falcon1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.johndson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Cowboy1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=c.martiwnez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Ferrari1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.rodrigruez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Samsung1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=e.sanchjez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Andrea1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=f.wilyson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Smokey1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=g.davioos, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Steelers1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=h.mooeere, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Joseph1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=i.thomas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Mercedes1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=j.johnhson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Dakota1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=k.martiunez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Arsenal1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=l.rodrigiuez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Eagles1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=m.sanychez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Melissa1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=n.wiwlson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Boomer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.daviuus, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Booboo1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.moorrre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Spider1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.thdddomas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Nascar1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.johntson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Tigers1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=s.marttinez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Yellow1 -mustchpwd no -pwdneverexpires yes -desc "Changed the users password to Yellow1"
+dsadd user "cn=t.rodrieguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Gateway1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.sancrhez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Marina1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=v.wilsion, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Diablo1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=w.davccis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Bulldog1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=x.moowsxre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Qwer12341 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.thomeeeas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Compaq1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=z.johnqson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Purple1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=a.martwinez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Hardcore1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.rodrigutuez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Banana1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=c.sanczhez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Junior1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.wilsuion, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Hannah1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=e.daerfvis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Porsche1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=f.mooure, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Lakers1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=g.thomeeeas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Iceman1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=h.johnsson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Cowboys1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=i.martinwez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd London1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=j.rodrwyiguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Tennis1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=k.sanchiez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Ncc17011 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=l.wilyson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Coffee1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=m.davssis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Scooby1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=n.moorcre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Miller1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.thomderas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Boston1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.johnsson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Q1w2e3r41 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.maratinez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Fuckoff1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.rodrieyguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Brandon1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=s.sancyhez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Yamaha1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.wilseon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Chester1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.daytvis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Mother1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=v.mocdore, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Forever1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=w.thomattts, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Johnny1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=x.johnsaon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Edward1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.martihnez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Oliver1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=z.rodrirtguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Redsox1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=a.sanchtez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Player1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.wilswon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Nikita1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=c.davyis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Knight1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.moodsre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Fender1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=e.thomfffas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Midnight1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=f.johnso, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Please1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=g.martinjez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Brandy1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=h.rodrigwuez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Badboy1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=i.sancohez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Iwantu1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=j.wilesosn, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Slayer1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=k.dawerris, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Rangers1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=l.moouiyre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Charles1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=m.thogghmas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Flower1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=n.johseeson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Bigdaddy1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.martidnez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Wizard1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.rodrasiguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Bigdick1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.sanchpez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Jasper1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.wilsson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Rachel1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=s.daveeris, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Steven1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=t.moodce, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Winner1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=u.thomhhas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Adidas1 -mustchpwd no -pwdneverexpires yes -desc "Changed the users password to Adidas1"
+dsadd user "cn=v.jhnson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Victoria1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=w.martfinez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Natasha1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=x.rodrifguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Jasmine1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=y.sancuhez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Winter1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=z.wilsaon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Prince1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=a.davihhuus, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Panties1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=b.mootfre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Marine1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=c.thomhhsas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Ghbdtn1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=d.johnsaon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Fishing1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=e.martidfnez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Cocacola1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=f.rodridfguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Casper1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=g.sancthez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Raiders1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=h.wilzson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Marlboro1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=i.davffis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Gandalf1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=j.moodckre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Asdfasdf1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=k.thomeweas, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Crystal1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=l.johnon, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Passw0rd! -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=m.martiynez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Golden1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=n.rodrsiguez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Blowme1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=o.sanrchez, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Bigtits1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=p.wiltson, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Panther1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=q.davfwfis, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Lauren1 -mustchpwd no -pwdneverexpires yes
+dsadd user "cn=r.mooyre, ou=Accounts, ou=Head_Office, ou=Departments, dc=hacklab, dc=local" -fn User -ln test -pwd Angela1 -mustchpwd no -pwdneverexpires yes
 
 # Head_Office / Administration
 
