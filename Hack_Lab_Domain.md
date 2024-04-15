@@ -8,7 +8,7 @@ For server 2008 - The following one line will convert a server 2008 R2 to a doma
 dcpromo /unattend /InstallDns:yes /dnsOnNetwork:yes /replicaOrNewDomain:domain /newDomain:forest /newDomainDnsName:hacklab.local /DomainNetbiosName:hacklab /databasePath:"c:\Windows\ntds" /logPath:"c:\Windows\ntdslogs" /sysvolpath:"c:\Windows\sysvol" /safeModeAdminPassword:Passw0rd! /forestLevel:2 /domainLevel:2 /rebootOnCompletion:yes
 ```
 
-For server 2019 - A PS one-liner to convert your server 2019 into a lab DC.
+For server 2019 and onwards - A PS one-liner to convert your server 2019 into a lab DC.
 
 ```
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force ; Install-WindowsFeature AD-Domain-Services  ; Import-Module ADDSDeployment ; Install-ADDSForest  -DatabasePath "C:\Windows\NTDS"  -DomainMode "Win2008R2"  -DomainName "hacklab.local"  -DomainNetbiosName "HACKLAB"  -ForestMode "Win2008R2"  -InstallDns:$true  -LogPath "C:\Windows\NTDS"  -NoRebootOnCompletion:$true  -SysvolPath "C:\Windows\SYSVOL"  -Force:$true ; Add-WindowsFeature RSAT-AD-Tools ; Restart-Computer
