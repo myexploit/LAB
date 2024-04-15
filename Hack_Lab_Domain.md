@@ -2,28 +2,28 @@
 
 Tested on server 2008R2, server 2019 and Server 2022.
 
-# For server 2008 - The following one line will convert a server 2008 R2 to a domain controller. Right click on CMD and run as administrator, then copy and paste the single line below in one go. (Clearly read it before but it will set up the domain called hacklab.local).  
+For server 2008 - The following one line will convert a server 2008 R2 to a domain controller. Right click on CMD and run as administrator, then copy and paste the single line below in one go. (Clearly read it before but it will set up the domain called hacklab.local).  
 
 ```
 dcpromo /unattend /InstallDns:yes /dnsOnNetwork:yes /replicaOrNewDomain:domain /newDomain:forest /newDomainDnsName:hacklab.local /DomainNetbiosName:hacklab /databasePath:"c:\Windows\ntds" /logPath:"c:\Windows\ntdslogs" /sysvolpath:"c:\Windows\sysvol" /safeModeAdminPassword:Passw0rd! /forestLevel:2 /domainLevel:2 /rebootOnCompletion:yes
 ```
 
-# For server 2019 - A PS one-liner to convert your server 2019 into a lab DC.
+For server 2019 - A PS one-liner to convert your server 2019 into a lab DC.
 
 ```
 Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force ; Install-WindowsFeature AD-Domain-Services  ; Import-Module ADDSDeployment ; Install-ADDSForest  -DatabasePath "C:\Windows\NTDS"  -DomainMode "Win2008R2"  -DomainName "hacklab.local"  -DomainNetbiosName "HACKLAB"  -ForestMode "Win2008R2"  -InstallDns:$true  -LogPath "C:\Windows\NTDS"  -NoRebootOnCompletion:$true  -SysvolPath "C:\Windows\SYSVOL"  -Force:$true ; Add-WindowsFeature RSAT-AD-Tools ; Restart-Computer
 ```
 
-# Set up a static IP on server 2019
+Set up a static IP on server 2019
 
 ```
 New-NetIPAddress –InterfaceAlias Ethernet0 –IPAddress ADD-Your-IP-Address-Here –PrefixLength 24 -DefaultGateway ADD-Your-DG-IP-Address-Here ; Set-DnsClientServerAddress -InterfaceAlias Ethernet0 -ServerAddresses ADD-Your-DNS-IP-Address-Here ; Restart-Computer
 ```
 
-# Build the fake AD lab
+Build the fake AD lab
 
-# After a reboot, right click on powershell and run as administrator, then copy the below sections and paste in. 
-# This will create OU, and assign users to the department names, each password which is very weak is the same, this is simply to create a lab domain for hacking, feel free to edit each password in the script as you require. It will also set up Service Principal Name (SPN) for some accounts, so you can kerberoast them.
+After a reboot, right click on powershell and run as administrator, then copy the below sections and paste in. 
+This will create OU, and assign users to the department names, each password which is very weak is the same, this is simply to create a lab domain for hacking, feel free to edit each password in the script as you require. It will also set up Service Principal Name (SPN) for some accounts, so you can kerberoast them.
 
 ```
 # Add Departments organizational unit (OU) Add Head_Office OU with nested department OU and IT OU.
