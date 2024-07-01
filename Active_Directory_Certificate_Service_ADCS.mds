@@ -1,3 +1,6 @@
 **Some notes on Active Directory Certificate Services (ADCS) Exploitation**
 
 This is a good video https://youtu.be/wozcGjAsfZ0?si=1LJ4wjcHEblrV_4P which explains AD CS ESC1 Privilege Escalation exploitation, but also shows how to configure the vulnerable certificate and how to remediate them.
+
+
+[link text](https://youtu.be/wozcGjAsfZ0?si=1LJ4wjcHEblrV_4P/my-link "link title")
