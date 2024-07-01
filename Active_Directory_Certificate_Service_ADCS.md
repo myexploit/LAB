@@ -296,9 +296,14 @@ Would you like to save the private key? (y/N)
 [-] Failed to request certificate
 ```
 
-Fix
+Fix - https://stealthpuppy.com/resolving-issues-starting-ca-offline-crl/
 
-Open admin CMD on your DC and execute - https://stealthpuppy.com/resolving-issues-starting-ca-offline-crl/
+Open admin CMD on your DC and execute
+
+```
+certutil –setreg ca\CRLFlags +CRLF_REVCHECK_IGNORE_OFFLINE
+```
+
 
 ```
 C:\Users\Administrator>certutil -setreg ca\CRLFlags +CRLF_REVCHECK_IGNORE_OFFLINE
