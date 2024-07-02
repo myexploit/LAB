@@ -1,5 +1,440 @@
 These are draft scripts I’m just toying with.
 
+
+**Domain User account enumeration - authenticates with AD then dumps a copy of all domain usernames**
+
+Save the below as AD-Test99.py
+
+```
+import argparse
+from ldap3 import Server, Connection, ALL, SUBTREE, core
+from ldap3.core.exceptions import LDAPException
+
+def authenticate(username, domain, password, domain_controller):
+    user_dn = f"{username}@{domain}"
+    server = Server(domain_controller, get_info=ALL)
+    
+    try:
+        conn = Connection(server, user=user_dn, password=password, auto_bind=True)
+        if conn.bind():
+            print("Authentication successful")
+            return conn
+        else:
+            print("Authentication failed")
+            return None
+    except LDAPException as e:
+        print(f"LDAPException: {e}")
+        print("Invalid credentials. Authentication failed.")
+        return None
+
+def get_all_usernames(conn, search_base):
+    page_size = 1000
+    cookie = None
+    usernames = []
+    
+    while True:
+        conn.search(
+            search_base,
+            '(objectClass=user)',
+            attributes=['sAMAccountName'],
+            paged_size=page_size,
+            paged_cookie=cookie
+        )
+        
+        if conn.entries:
+            for entry in conn.entries:
+                usernames.append(entry.sAMAccountName.value)
+                
+        cookie = conn.result['controls']['1.2.840.113556.1.4.319']['value']['cookie']
+        
+        if not cookie:
+            break
+    
+    if usernames:
+        print("List of usernames:")
+        for username in usernames:
+            print(username)
+    else:
+        print("No users found or unable to retrieve user list.")
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Authenticate and optionally list AD users")
+    parser.add_argument("-u", "--username", required=True, help="Username")
+    parser.add_argument("-p", "--password", required=True, help="Password")
+    parser.add_argument("-d", "--domain", required=True, help="Domain")
+    parser.add_argument("-dc", "--domain_controller", required=True, help="Domain Controller Hostname")
+    parser.add_argument("-UN", "--usernames", action="store_true", help="Enumerate and display all domain usernames")
+    
+    args = parser.parse_args()
+    
+    conn = authenticate(args.username, args.domain, args.password, args.domain_controller)
+    
+    if conn and args.usernames:
+        search_base = f"dc={args.domain.replace('.', ',dc=')}"
+        get_all_usernames(conn, search_base)
+        conn.unbind()
+
+```
+
+**Demo Domain User account enumeration**
+
+```
+ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ python3 AD-Test99.py -u g.white -p 'Passw0rd!' -d hacklab.local -dc WIN-8HPLF8PSHC1.hacklab.local -UN
+Authentication successful
+List of usernames:
+Administrator
+Guest
+WIN-8HPLF8PSHC1$
+krbtgt
+da1
+n.collins
+o.davidson
+p.davies
+q.dawson
+u.dixon
+r.edwards
+s.elliot
+t.evans
+u.fisher
+v.fletcher
+w.ford
+x.foster
+y.fox
+z.gibson
+a.graham
+b.grant
+c.gray
+d.green
+b.smith
+c.johnason
+d.thomas
+e.miller
+f.johnsson
+g.williams
+t.harris
+i.jackson
+t.wilsson
+k.mmoore
+l.martsinez
+m.marjtinez
+n.anderson
+o.thompson
+p.thompson
+q.lewis
+r.robinson
+s.sancshez
+t.clark
+u.hernandez
+v.hill
+w.king
+x.rossi
+y.darrdvis
+z.perez
+a.white
+b.jackson
+c.smith
+d.taylor
+e.martin
+f.thoffmas
+g.hernandez
+h.rodrgviguez
+i.johncson
+j.miller
+k.jones
+l.davsris
+m.andessrson
+y.johnfson
+o.mooore
+p.clark
+q.thomdas
+r.martianez
+s.wiloson
+t.robinson
+u.marteinez
+v.sancahez
+w.moorre
+x.thompson
+y.martsinez
+z.hernandez
+a.miller
+b.rodriseguez
+c.anderson
+d.sancahez
+e.wilison
+f.davrtsis
+g.mooree
+h.thomddfas
+z.johnsson
+j.martainez
+k.rodrigfduez
+l.sanchdez
+m.clark
+n.davdemis
+o.wilwson
+p.robinson
+q.hernandez
+r.martiynez
+s.anderson
+t.johnsron
+u.rodrigkjuez
+v.sancghez
+w.wilsaon
+x.davifis
+y.moossre
+z.thomssas
+a.martinuez
+b.hernandez
+c.robinson
+d.clark
+e.jodhnson
+f.sanwchez
+g.wilpson
+h.davxris
+i.moofrre
+j.massrtainez
+k.rodrijguez
+l.sancahez
+m.anderson
+n.johnsson
+o.martiwnez
+p.hernandez
+q.wiloson
+r.davirws
+s.moewore
+t.thoweermas
+u.johnslon
+v.martienez
+w.rodrisguez
+x.sanchgez
+y.wilison
+z.davsdis
+a.clark
+b.johndson
+c.martiwnez
+d.rodrigruez
+e.sanchjez
+f.wilyson
+g.davioos
+h.mooeere
+i.thomas
+j.johnhson
+k.martiunez
+l.rodrigiuez
+m.sanychez
+n.wiwlson
+o.daviuus
+p.moorrre
+q.thdddomas
+r.johntson
+s.marttinez
+t.rodrieguez
+u.sancrhez
+v.wilsion
+w.davccis
+x.moowsxre
+y.thomeeeas
+z.johnqson
+a.martwinez
+b.rodrigutuez
+c.sanczhez
+d.wilsuion
+e.daerfvis
+f.mooure
+g.thomeeeas
+h.johnsson
+i.martinwez
+j.rodrwyiguez
+k.sanchiez
+l.wilyson
+m.davssis
+n.moorcre
+o.thomderas
+p.johnsson
+q.maratinez
+r.rodrieyguez
+s.sancyhez
+t.wilseon
+u.daytvis
+v.mocdore
+w.thomattts
+x.johnsaon
+y.martihnez
+z.rodrirtguez
+a.sanchtez
+b.wilswon
+c.davyis
+d.moodsre
+e.thomfffas
+f.johnso
+g.martinjez
+h.rodrigwuez
+i.sancohez
+j.wilesosn
+k.dawerris
+l.moouiyre
+m.thogghmas
+n.johseeson
+o.martidnez
+p.rodrasiguez
+q.sanchpez
+r.wilsson
+s.daveeris
+t.moodce
+u.thomhhas
+v.jhnson
+w.martfinez
+x.rodrifguez
+y.sancuhez
+z.wilsaon
+a.davihhuus
+b.mootfre
+c.thomhhsas
+d.johnsaon
+e.martidfnez
+f.rodridfguez
+g.sancthez
+h.wilzson
+i.davffis
+j.moodckre
+k.thomeweas
+l.johnon
+m.martiynez
+n.rodrsiguez
+o.sanrchez
+p.wiltson
+q.davfwfis
+r.mooyre
+m.jenkins
+n.johnson
+o.jones
+g.white
+h.yalden
+i.yarbury
+j.yardley
+z.mcdonald
+a.murphy
+b.natt
+c.nelson
+d.nightingale
+e.nixon
+f.nutter
+p.kelly
+q.kennedy
+u.king
+r.knight
+s.lawrence
+t.lee
+u.lewis
+v.lloyd
+w.marshall
+x.martin
+y.mason
+g.dell
+h.osborne
+i.owen
+j.oxley
+k.page
+l.painter
+m.palmer
+n.pastor
+o.peterson
+p.quill
+q.quimby
+u.quintrell
+r.ramsey
+s.ratliff
+t.richards
+u.roberts
+v.robinson
+w.scott
+x.simpson
+y.smith
+z.stewart
+a.taylor
+b.turner
+c.walsh
+d.ward
+e.webb
+f.west
+d.atkinson
+e.bailey
+f.baker
+g.ball
+h.bell
+i.brown
+j.burton
+k.carter
+l.clarke
+m.cole
+e.griffiths
+f.hall
+g.hamilton
+h.harris
+i.harvey
+j.hill
+k.jackson
+l.james
+k.yarrow
+l.yates
+m.young
+n.zachary
+o.zelly
+p.zinc
+q.zouch
+a.adams
+b.allen
+c.armstrong
+adm.adams
+adm.smith
+adm.stewart
+adm.natt
+adm.nelson
+svc_afds
+svc_test
+svc_mssql1
+svc_mssql2
+svc_lab
+svc_admin
+SR2000-1$
+SR2000-2$
+SR2000-3$
+SR2000-4$
+SR2000-5$
+SR2000-6$
+SR2003-1$
+SR2003-2$
+SR2003-3$
+SR2003-4$
+SR2003-5$
+SR2003-6$
+SR208-1$
+SR208-2$
+SR208-3$
+SR208-4$
+SR208-5$
+SR208-6$
+SR2012-1$
+SR2012-2$
+SR2012-3$
+SR2012-4$
+SR2019-1$
+SR2019-2$
+SR2019-3$
+SR2019-4$
+W7-1$
+W7-2$
+W7-3$
+W7-4$
+W7-5$
+W7-6$
+XP-1$
+WIN-10-LAB$
+WIN-10-LAB-2$
+Tom_ADM
+kay1
+ubuntu@ubuntu-virtual-machine:~/Documents/Tools$
+```
+
 **Domain credential stuffing script**
 
 This script needs ldap3
