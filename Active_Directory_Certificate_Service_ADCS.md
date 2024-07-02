@@ -411,12 +411,12 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 **Creating Vulnerable ESC1 Certificate**
 
 
-1.	Open Server Manager / Tools / Certification Authority
+1.	Open Server Manager / Tools / Certification Authority.
 
 ![1](https://github.com/myexploit/LAB/assets/15686493/a62c3e4f-8522-4c34-9d67-c74291dc1b32)
 
 
-2.	Right click on Certificate Templates / Manage
+2.	Right click on Certificate Templates / Manage.
 
 ![2](https://github.com/myexploit/LAB/assets/15686493/50df8455-e8a0-4586-9ac4-0abecefe906f)
 
