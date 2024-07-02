@@ -2,6 +2,12 @@ These are draft scripts I’m just toying with.
 
 **Domain credential stuffing script**
 
+This script needs ldap3
+
+```
+pip install ldap3
+```
+
 ```
 import argparse
 from ldap3 import Server, Connection, ALL, SUBTREE, core
