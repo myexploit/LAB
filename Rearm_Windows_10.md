@@ -12,11 +12,15 @@ CMD with admin privs
 
 See how many rearms you got left.
 
+```
 slmgr /dlv
+```
 
 Then to rearm
 
+```
 slmgr /rearm
+```
 
 
 
@@ -25,7 +29,10 @@ After 90 days trial period expired, perform the following steps to get additiona
 Press Windows key + R to open a Run box.
 
 Type
+```
 regedit
+```
+
 and press Enter to open the Registry Editor. If the UAC (User Account Control) prompt, click Yes to grant admin access.
 
 Navigate to the following location:
