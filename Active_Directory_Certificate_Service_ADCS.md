@@ -148,12 +148,12 @@ Certificate Templates
   1
     Template Name                       : ESC1-Vun1
     Display Name                        : ESC1-Vun1
-    Certificate Authorities             : hacklab-WIN-8HPLF8PSHC1-CA - ***Note you need this info***.
-    Enabled                             : True
-    Client Authentication               : True
+    Certificate Authorities             : hacklab-WIN-8HPLF8PSHC1-CA - **Note you need this info**.
+    Enabled                             : True - ** Note to exploit this needs to be enabled **.
+    Client Authentication               : True - ** Note to exploit this needs to be enabled **.
     Enrollment Agent                    : False
     Any Purpose                         : False
-    Enrollee Supplies Subject           : True
+    Enrollee Supplies Subject           : True - ** Note to exploit this needs to be enabled **.
     Certificate Name Flag               : EnrolleeSuppliesSubject
     Enrollment Flag                     : PublishToDs
     Private Key Flag                    : 16777216
@@ -168,7 +168,7 @@ Certificate Templates
     Minimum RSA Key Length              : 2048
     Permissions
       Enrollment Permissions
-        Enrollment Rights               : HACKLAB.LOCAL\Domain Users
+        Enrollment Rights               : HACKLAB.LOCAL\Domain Users - ** Note to exploit this Domain Users needs to be enabled or Domain Computers **. 
                                           HACKLAB.LOCAL\Domain Admins
                                           HACKLAB.LOCAL\Domain Computers
                                           HACKLAB.LOCAL\Enterprise Admins
