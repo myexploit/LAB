@@ -2,6 +2,8 @@
 
 This is a good video https://youtu.be/wozcGjAsfZ0?si=1LJ4wjcHEblrV_4P which explains AD CS ESC1 Privilege Escalation exploitation, but also shows how to configure the vulnerable certificate and how to remediate them.
 
+**Using Certipy which is arguably the easier method.**
+
 **Install certipy in Ubuntu**
 
 Create a Python virtualenv which is an isolated Python environment, allowing you to install any tool and update it without the risk of impacting other python tools.
