@@ -148,7 +148,7 @@ Certificate Templates
   1
     Template Name                       : ESC1-Vun1
     Display Name                        : ESC1-Vun1
-    Certificate Authorities             : hacklab-WIN-8HPLF8PSHC1-CA
+    Certificate Authorities             : hacklab-WIN-8HPLF8PSHC1-CA - ***Note you need this info***.
     Enabled                             : True
     Client Authentication               : True
     Enrollment Agent                    : False
