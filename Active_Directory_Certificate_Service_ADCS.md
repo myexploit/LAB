@@ -198,7 +198,7 @@ From the Certificate Authorities section, you need the CA Name and the DNS Name 
     DNS Name                            : WIN-8HPLF8PSHC1.hacklab.local
 ```
 
-Following this for a certificate to be vulnerable it requires the configuration to be set as defined below.
+**Following this for a certificate to be vulnerable it requires the configuration to be set as defined below.**
 
 ```
 Template Name                       : Add_Vulnerable_ Certs_Name
