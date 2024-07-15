@@ -747,7 +747,7 @@ Credentials:
 ```
 
 
-**Using Certify errors**
+**Certify errors**
 
 The below error was caused because I executed the certify.exe file without also moving the Interop.CERTENROLLLib.dll file. Add the Interop.CERTENROLLLib.dll file to the same directory and the problem is fixed. 
 
