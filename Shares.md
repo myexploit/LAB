@@ -108,4 +108,4 @@ Z:\>
 
 ```
 
-Once I get more time I will add a load of vulnerable shares to my https://github.com/myexploit/LAB/blob/master/Hack_Lab_Domain.md script, so you can enumerate for common words across network shares.
+Once I get more time I will add a load of vulnerable shares to my https://github.com/myexploit/LAB/blob/master/Hack_Lab_Domain.md script, so you can enumerate for common words across an exposed network share.
