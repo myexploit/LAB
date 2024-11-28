@@ -97,4 +97,15 @@ Z:\>
 
 ```
 
+Hunting for defined words within the documents across the shares folders. Read this for more info on this method (https://github.com/myexploit/Hunt).
+
+```
+Z:\>findstr /si password *.bat *.xml *.ini *.txt
+happy\sun.txt:happy clap golf password
+readme.txt:happy golf fish password
+
+Z:\>
+
+```
+
 Once I get more time I will add a load of vulnerable shares to my https://github.com/myexploit/LAB/blob/master/Hack_Lab_Domain.md script, so you can enumerate for common words across network shares.
