@@ -2,7 +2,7 @@ Living-off-the-land (LOTL) technique to access basic Active Directory Users and 
 
 While this is an interesting technique, it’s not that useful as it only appears to reveal one domain group per username, but it does allow you to enumerate all machine names, usernames within Active Directory.
 
-The testing accounts domain group membership.
+The testing account.
 
 ```
 User name                    g.white
@@ -69,6 +69,6 @@ The command completed successfully.
 
 ![image](https://github.com/user-attachments/assets/e476c061-a03d-41fa-862a-523357aa0df8)
 
-You can only see the first domain group the account is associated with from this limited search function, but it’s still a useful technique for stealthy enumeration.
+You can only see the first domain group the account is associated with from this limited search function.
 
 ![image](https://github.com/user-attachments/assets/5ba938c4-31e5-46fa-8f3a-9b25945492ba)
